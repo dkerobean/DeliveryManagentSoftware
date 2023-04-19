@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from django.contrib.auth import login, logout, authenticate
 from django.contrib import messages
+from .forms import CustomUserCreationForm
 
 
 """ HOME PAGE """
@@ -48,7 +49,22 @@ def userLogout(request):
 
 def userSignUp(request):
     
-    return render(request, 'frontend/register.html')
+    form = CustomUserCreationForm()
+    
+    if request.method == "POST":
+        form = CustomUserCreationForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            user.save()
+            messages.success(request, 'Registration Success')
+            login(request, user)
+        return redirect('home')
+    
+    context = {
+        'form':form
+    }
+    
+    return render(request, 'frontend/register.html', context)
 
 
 """ 404 PAGE """

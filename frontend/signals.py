@@ -8,9 +8,12 @@ def createProfile(sender, instance, created, **kwargs):
     
     if created:
         user = instance
-        profile = Prrofile.objects.create(
+        profile = Profile.objects.create(
             user = user, 
-            name = user.first_name
+            name = user.first_name,
+            username = user.first_name,
+            email = '',
+            location = ''
         )
  
 @receiver(post_save, sender=Profile)       
