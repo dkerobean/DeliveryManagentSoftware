@@ -54,7 +54,9 @@ ROOT_URLCONF = 'deliveryapp.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [
+            BASE_DIR / 'templates'
+            ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -68,6 +70,10 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'deliveryapp.wsgi.application'
+
+STATICFILES_DIRS = [
+    BASE_DIR / 'static'
+]
 
 
 # Database
