@@ -17,3 +17,10 @@ def userLogin(request):
 def userSignUp(request):
     
     return render(request, 'frontend/register.html')
+
+
+""" 404 PAGE """
+
+def handler404(request, exception):
+    
+    return render(request, 'frontend/404.html', status=404)
