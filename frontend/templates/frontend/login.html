@@ -79,20 +79,21 @@
                     <span class="divider">or</span>
                   </div>
 
-                  <form action="signin.html#" class="sign-up-form">
+                  <form action="{% url 'user-login' %}" class="sign-up-form" method="POST">
+                    {% csrf_token %}
                     <div class="row">
                       <div class="col-md-12">
-                        <input type="email" placeholder="Email address or username" />
+                        <input type="text" placeholder="Username" name="username" autocapitalize="none" />
                       </div>
                       <div class="col-md-12 mt-20">
-                        <input type="password" placeholder="Password*" />
+                        <input type="password" placeholder="Password*" name="password" />
                       </div>
                       <div class="col-6">
                         <input type="checkbox" id="remember" />
                         <label class="check-text" for="remember"> Remember me </label>
                       </div>
                       <div class="col-6">
-                        <a class="forgot-link float-end" href="signin.html#">Forgot Password?</a>
+                        <a class="forgot-link float-end" href="#">Forgot Password?</a>
                       </div>
                       <div class="col-md-12 mt-30">
                         <input class="btn btn-red" type="submit" value="Sign In" />
@@ -102,7 +103,7 @@
                         <p class="form-text mt-20">
                           Don’t have an account?
                           <br />
-                          <a href="https://html.spiderthemes-demos.com/landpagy/signup.html">Create account</a>
+                          <a href="{% url 'user-register' %}">Create account</a>
                         </p>
                       </div>
                     </div>
