@@ -1,0 +1,833 @@
+{% extends 'layouts/frontend_base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+    <main>
+      <!-- Banner Area -->
+      <section class="banner-area">
+        <div class="container">
+          <div class="row flex-column-reverse flex-md-row align-items-center">
+            <div class="col-md-6">
+              <div class="banner-left">
+                <h1>
+                  Colaboration Without
+                  <span>
+                    Hassle
+                    <svg width="225" height="16" viewBox="0 0 225 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path
+                        d="M224.931 15.1987C151.063 1.40293 47.4825 6.23252 4.92601 10.3718L0.241161 6.21004C91.4615 -6.66766 188.043 6.83677 224.931 15.1987Z"
+                        fill="#EC595A"
+                      />
+                    </svg>
+                  </span>
+                </h1>
+                <p class="banner-para">Diam et dolor interdum interdum faucibus et auctor. A lectus tincidunt non molestie rhoncus at. Sed aliquam a neque.</p>
+                <form class="form-group">
+                  <input type="email" placeholder="Enter your email to book demo" />
+                  <button type="submit" class="btn btn-red">Book A Demo</button>
+                </form>
+                <span class="sub-content">Free 14 days trial. <strong>No credit</strong> card required</span>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="banner-right">
+                <span class="banner-shapes wow fadeInDownBig"></span>
+                <img class="banner-shapes2 wow fadeInDown" src="{% static 'assets/images/shape/banner-shape2.svg' %}" alt="Shape Image" />
+                <img class="banner-shapes3 wow fadeInDownBig" data-wow-duration="1.2s" src="{% static 'assets/images/shape/banner-shape3.svg' %}" alt="Shape Image" />
+                <img class="banner-shapes4 wow fadeInLeft" src="{% static 'assets/images/shape/banner-shape4.svg' %}" alt="Shape Image" />
+                <img class="banner-shapes5 wow fadeInRightBig" src="{% static 'assets/images/shape/banner-shape5.svg' %}" alt="Shape Image" />
+                <img class="banner-shapes6 wow fadeInDown" src="{% static 'assets/images/shape/banner-shape2.svg' %}" alt="Shape Image" />
+                <img class="banner-shapes7 wow fadeInRightBig" src="{% static 'assets/images/shape/banner-shape6.svg' %}" alt="Shape Image" />
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- <img class="banner-shape-2" src="{% static 'assets/images/shape/bg-shape-2.png' %}" alt="Pricing Banner Shape"> -->
+      </section>
+      <!-- Banner Area -->
+
+      <!-- Client Area -->
+      <section class="client-area">
+        <div class="container">
+          <div class="client-wrapper">
+            <div class="row">
+              <div class="col-12">
+                <div class="client-text">
+                  <h4 class="mt-n3"><span>3000+ Companies</span> Trust Sturtaplanding to build landing page for their <span>dream product</span></h4>
+                </div>
+              </div>
+            </div>
+            <div class="row justify-content-center">
+              <div class="w-50 w-md-20">
+                <div class="client-image">
+                  <img src="{% static 'assets/images/brand/brand-1.svg' %}" alt="Brand Image" />
+                </div>
+              </div>
+              <div class="w-50 w-md-20">
+                <div class="client-image">
+                  <img src="{% static 'assets/images/brand/brand-2.svg' %}" alt="Brand Image" />
+                </div>
+              </div>
+              <div class="w-50 w-md-20">
+                <div class="client-image">
+                  <img src="{% static 'assets/images/brand/brand-3.svg' %}" alt="Brand Image" />
+                </div>
+              </div>
+              <div class="w-50 w-md-20">
+                <div class="client-image">
+                  <img src="{% static 'assets/images/brand/brand-4.svg' %}" alt="Brand Image" />
+                </div>
+              </div>
+              <div class="w-50 w-md-20">
+                <div class="client-image">
+                  <img src="{% static 'assets/images/brand/brand-5.svg' %}" alt="Brand Image" />
+                </div>
+              </div>
+            </div>
+            <div class="client-meta">
+              <ul class="client-review-icon">
+                <li><i class="fas fa-star"></i></li>
+                <li><i class="fas fa-star"></i></li>
+                <li><i class="fas fa-star"></i></li>
+                <li><i class="fas fa-star"></i></li>
+                <li><i class="fas fa-star"></i></li>
+              </ul>
+              <div class="client-review-number"><span>4.9</span> Stars</div>
+              <div class="client-review"><span>5121+</span> Reviews</div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Client Area -->
+
+      <!-- Features Area -->
+      <section class="features section-padding">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-6">
+              <div class="features-image">
+                <img src="{% static 'assets/images/features/feature.png' %}" alt="Features Image" />
+                <img
+                  src="{% static 'assets/images/features/features-object-1.svg' %}"
+                  alt="Features Object"
+                  class="features-object1 object-element"
+                  data-paroller-factor="0.1"
+                  data-paroller-type="foreground"
+                  data-paroller-direction="horizontal"
+                  data-paroller-transition="transform .2s linear"
+                />
+                <img src="{% static 'assets/images/features/features-object-2.svg' %}" alt="Features Object" class="features-object2" />
+                <img
+                  class="features-object3 object-element"
+                  data-paroller-factor="0.05"
+                  data-paroller-type="foreground"
+                  data-paroller-direction="horizontal"
+                  data-paroller-transition="transform .2s linear"
+                  src="{% static 'assets/images/features/features-object-3.svg' %}"
+                  alt="Features Object"
+                />
+                <img
+                  src="{% static 'assets/images/features/features-object-4.svg' %}"
+                  alt="Features Object"
+                  class="features-object4 object-element"
+                  data-paroller-factor="0.05"
+                  data-paroller-type="foreground"
+                  data-paroller-transition="transform .2s linear"
+                />
+                <img
+                  src="{% static 'assets/images/features/features-object-5.svg' %}"
+                  alt="Features Object"
+                  class="features-object5 object-element"
+                  data-paroller-type="foreground"
+                  data-paroller-factor="0.1"
+                  data-paroller-transition="transform .2s linear"
+                />
+                <div class="round-object"></div>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="features-content">
+                <h2>Outstanding Features & Automations</h2>
+                <h3>
+                  We created world's first project visualisation software for
+                  <span>remote teams.</span>
+                </h3>
+                <p>
+                  We're here every step of the way making sure you and your team deliver. We're here every step of the way making sure you and your team deliver
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Features Area -->
+
+      <!-- Why Choose us Area -->
+      <section class="why-choose section-padding">
+        <div class="container">
+          <div class="why-choose-wrapper">
+            <div class="row">
+              <div class="col-md-4 wow fadeInUp animate__faster">
+                <div class="why-choose-item">
+                  <div class="why-choose-icon">
+                    <img src="{% static 'assets/images/icon/icon.svg' %}" alt="Why Choose Icon" />
+                  </div>
+                  <h4>Deadlines will never surprise you again.</h4>
+                  <p>We're here every step of the way making sure you and your team deliver</p>
+                </div>
+              </div>
+              <div class="col-md-4 wow fadeInUp animate__fast">
+                <div class="why-choose-item">
+                  <div class="why-choose-icon">
+                    <img src="{% static 'assets/images/icon/icon-2.svg' %}" alt="Why Choose Icon" />
+                  </div>
+                  <h4>Everyone knows what need to do.</h4>
+                  <p>We're here every step of the way making sure you and your team deliver</p>
+                </div>
+              </div>
+              <div class="col-md-4 wow fadeInUp">
+                <div class="why-choose-item">
+                  <div class="why-choose-icon">
+                    <img src="{% static 'assets/images/icon/icon-3.svg' %}" alt="Why Choose Icon" />
+                  </div>
+                  <h4>Less juggling, more time for Real Work.</h4>
+                  <p>We're here every step of the way making sure you and your team deliver</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Why Choose us Area -->
+
+      <!-- Features Area Two-->
+      <section class="features-area-two section-padding">
+        <div class="container">
+          <div class="row align-items-center">
+            <div class="col-md-6 col-lg-5">
+              <div class="features-content">
+                <h2 class="mt-n4">Fast & powerful to get out of your way</h2>
+                <p>Aenean amet netus aliquam elit eu, sagittis id natoque id.</p>
+                <div class="features-counter">
+                  <span>Trusted By </span>
+                  <br />
+                  <strong><span class="counter">3000</span>+</strong>
+                  <br />
+                  <p>Company</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 col-lg-7">
+              <div class="features-image">
+                <img src="{% static 'assets/images/features/features-2.png' %}" alt="Features Image" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Features Area Two-->
+
+      <!-- Testimonial Area -->
+      <section class="testimonial-area testimonial bg-black wow fadeInUp animate__fast">
+        <div id="fixedWrapper" class="pt-md-4">
+          <div class="container">
+            <div class="row">
+              <div class="col-12">
+                <div class="testimonial-title text-center">
+                  <h2 class="text-white mt-n3">Choose a workflow or make your own</h2>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="container">
+            <div id="scroll-container">
+              <div class="row">
+                <div class="col-12 max-width">
+                  <div class="testimonial-wrapper">
+                    <div class="row align-items-center">
+                      <div class="col-7 col-md-7">
+                        <div class="testimonial-content">
+                          <h3 class="mt-n4">Plan & Create</h3>
+                          <span> Elit sed sapien viverra eleifend malesuada purus pellentesque ut eget. </span>
+                          <p>Ligula ridiculus lacinia mattis non volutpat. Pellentesque id aenean diam aenean tincidunt non fermentum nunc mattis.</p>
+                          <div class="testimonial-review">
+                            <i class="fas fa-quote-left"></i>
+                            <p>
+                              Startup Landing is a great theme. Ligula ridiculus lacinia mattis non volutpat.
+                              <span>Ligula ridiculus lacinia</span>
+                            </p>
+                            <div class="testimonial-author">
+                              <div class="testimonial-author-image">
+                                <img src="{% static 'assets/images/testimonial/testimonial-1.jpg' %}" alt="Testimonial" />
+                              </div>
+                              <div class="testimonial-author-name">
+                                <h4>Jesus Requena</h4>
+                                <span>Support Engineer, Aliexpress</span>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-5 col-md-5">
+                        <div class="testimonial-right-image">
+                          <img src="{% static 'assets/images/testimonial/testimonial.png' %}" alt="" />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-12 max-width">
+                  <div class="testimonial-wrapper">
+                    <div class="row align-items-center">
+                      <div class="col-7 col-md-7">
+                        <div class="testimonial-content">
+                          <h3 class="mt-n4">Plan & Create</h3>
+                          <span>Elit sed sapien viverra eleifend malesuada purus pellentesque ut eget.</span>
+                          <p>Ligula ridiculus lacinia mattis non volutpat. Pellentesque id aenean diam aenean tincidunt non fermentum nunc mattis.</p>
+                          <div class="testimonial-review">
+                            <i class="fas fa-quote-left"></i>
+                            <p>
+                              Startup Landing is a great theme. Ligula ridiculus lacinia mattis non volutpat.
+                              <span>Ligula ridiculus lacinia</span>
+                            </p>
+                            <div class="testimonial-author">
+                              <div class="testimonial-author-image">
+                                <img src="{% static 'assets/images/testimonial/testimonial-1.jpg' %}" alt="Testimonial" />
+                              </div>
+                              <div class="testimonial-author-name">
+                                <h4>Jesus Requena</h4>
+                                <span>Support Engineer, Aliexpress</span>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-5 col-md-5">
+                        <div class="testimonial-right-image">
+                          <img src="{% static 'assets/images/testimonial/testimonial.png' %}" alt="" />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-12 max-width">
+                  <div class="testimonial-wrapper">
+                    <div class="row align-items-center">
+                      <div class="col-7 col-md-7">
+                        <div class="testimonial-content">
+                          <h3 class="mt-n4">Plan & Create</h3>
+                          <span>Elit sed sapien viverra eleifend malesuada purus pellentesque ut eget.</span>
+                          <p>Ligula ridiculus lacinia mattis non volutpat. Pellentesque id aenean diam aenean tincidunt non fermentum nunc mattis.</p>
+                          <div class="testimonial-review">
+                            <i class="fas fa-quote-left"></i>
+                            <p>
+                              Startup Landing is a great theme. Ligula ridiculus lacinia mattis non volutpat.
+                              <span>Ligula ridiculus lacinia</span>
+                            </p>
+                            <div class="testimonial-author">
+                              <div class="testimonial-author-image">
+                                <img src="{% static 'assets/images/testimonial/testimonial-1.jpg' %}" alt="Testimonial" />
+                              </div>
+                              <div class="testimonial-author-name">
+                                <h4>Jesus Requena</h4>
+                                <span>Support Engineer, Aliexpress</span>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-5 col-md-5">
+                        <div class="testimonial-right-image">
+                          <img src="{% static 'assets/images/testimonial/testimonial.png' %}" alt="" />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Testimonial Area -->
+
+      <!-- Features Area Three -->
+      <section class="features-area-three wow fadeInUp animate__fast">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <div class="section-title-center">
+                <h2 class="mt-n4">A Workflow That Makes Sense</h2>
+                <p>Aenean amet netus aliquam elit eu, sagittis id natoque id. Purus augue fermentum dui aliquam dui vel.</p>
+              </div>
+            </div>
+            <div class="col-12 wow fadeInUp">
+              <nav>
+                <div class="nav justify-content-center" id="nav-tab" role="tablist">
+                  <button
+                    class="nav-link active"
+                    id="nav-carban-tab"
+                    data-bs-toggle="tab"
+                    data-bs-target="#nav-carban"
+                    type="button"
+                    role="tab"
+                    aria-controls="nav-carban"
+                    aria-selected="true"
+                  >
+                    Carban
+                  </button>
+                  <button
+                    class="nav-link"
+                    id="nav-timeline-tab"
+                    data-bs-toggle="tab"
+                    data-bs-target="#nav-timeline"
+                    type="button"
+                    role="tab"
+                    aria-controls="nav-timeline"
+                    aria-selected="false"
+                  >
+                    Timeline
+                  </button>
+                  <button
+                    class="nav-link"
+                    id="nav-list-tab"
+                    data-bs-toggle="tab"
+                    data-bs-target="#nav-list"
+                    type="button"
+                    role="tab"
+                    aria-controls="nav-list"
+                    aria-selected="false"
+                  >
+                    List
+                  </button>
+                  <button
+                    class="nav-link"
+                    id="nav-calendar-tab"
+                    data-bs-toggle="tab"
+                    data-bs-target="#nav-calendar"
+                    type="button"
+                    role="tab"
+                    aria-controls="nav-calendar"
+                    aria-selected="false"
+                  >
+                    Calendar
+                  </button>
+                </div>
+              </nav>
+              <div class="tab-content features-tab-content" id="nav-tabContent">
+                <div class="tab-pane fade show active" id="nav-carban" role="tabpanel" aria-labelledby="nav-carban-tab">
+                  <div class="features-tab-image">
+                    <img src="{% static 'assets/images/features/features-3.png' %}" alt="Features" />
+                  </div>
+                </div>
+                <div class="tab-pane fade" id="nav-timeline" role="tabpanel" aria-labelledby="nav-timeline-tab">
+                  <div class="features-tab-image">
+                    <img src="{% static 'assets/images/features/features-3.png' %}" alt="Features" />
+                  </div>
+                </div>
+                <div class="tab-pane fade" id="nav-calendar" role="tabpanel" aria-labelledby="nav-calendar-tab">
+                  <div class="features-tab-image">
+                    <img src="{% static 'assets/images/features/features-3.png' %}" alt="Features" />
+                  </div>
+                </div>
+                <div class="tab-pane fade" id="nav-list" role="tabpanel" aria-labelledby="nav-list-tab">
+                  <div class="features-tab-image">
+                    <img src="{% static 'assets/images/features/features-3.png' %}" alt="Features" />
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-12">
+              <div class="features-form text-center">
+                <form class="form-group">
+                  <input type="email" placeholder="Enter your email to book demo" />
+                  <button type="submit" class="btn btn-red">Book A Demo</button>
+                </form>
+                <span class="sub-content">Free 14 days trial. No credit card required</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Features Area Three -->
+
+      <!-- Features Area Four -->
+      <section class="features features-area-four section-padding wow fadeInUp animate__fast">
+        <div class="container">
+          <div class="row align-items-center flex-column-reverse flex-lg-row">
+            <div class="col-lg-6">
+              <div class="features-content features-content-four">
+                <h2>Realtime insight about your team</h2>
+                <h3>Designed following <span>convertion</span> metrix</h3>
+                <p>
+                  We're here every step of the way making sure you and your team deliver. We're here every step of the way making sure you and your team deliver
+                </p>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="features-image">
+                <img src="{% static 'assets/images/features/features-4.png' %}" alt="Features Image" />
+                <img src="{% static 'assets/images/features/features-object-6.svg' %}" alt="Features Object" class="features-object6" />
+                <img
+                  src="{% static 'assets/images/features/features-object-7.svg' %}"
+                  alt="Features Object"
+                  class="features-object7 object-element"
+                  data-paroller-factor="0.05"
+                  data-paroller-type="foreground"
+                  data-paroller-direction="horizontal"
+                  data-paroller-transition="transform .2s linear"
+                />
+                <img
+                  src="{% static 'assets/images/features/features-object-8.svg' %}"
+                  alt="Features Object"
+                  class="features-object8 object-element"
+                  data-paroller-factor="0.05"
+                  data-paroller-type="foreground"
+                  data-paroller-transition="transform .2s linear"
+                />
+                <img
+                  src="{% static 'assets/images/features/features-object-9.svg' %}"
+                  alt="Features Object"
+                  class="features-object9 object-element"
+                  data-paroller-factor="-0.05"
+                  data-paroller-type="foreground"
+                  data-paroller-transition="transform .2s linear"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Features Area Four -->
+
+      <!-- Features Area Five -->
+      <section class="features-area-five section-padding wow fadeInUp animate__fast">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <div class="section-title-center">
+                <h2 class="mt-n4">Move work forward from anywhere</h2>
+              </div>
+              <div class="feature-image">
+                <img src="{% static 'assets/images/features/feature-5.png' %}" alt="Features Image" />
+                <img src="{% static 'assets/images/features/features-8.png' %}" alt="Features Image" class="features8" />
+                <img src="{% static 'assets/images/features/features-9.png' %}" alt="Features Image" class="features9" />
+                <p>
+                  We're here every step of the way making sure you and your team deliver. We're here every step of the way making sure you and your team deliver
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Features Area Five -->
+
+      <!-- Logo Grid Area -->
+      <section class="logo-grid-area wow fadeInUp animate__fast">
+        <div class="container-fluid">
+          <div class="logo-grid-wrapper">
+            <div class="row flex-column-reverse flex-lg-row align-items-center">
+              <div class="col-lg-6">
+                <div class="section-title-left">
+                  <h2 class="mt-n3">Connected to the tools you love</h2>
+                  <span>Easy way to integrate</span>
+                  <p>
+                    We're here every step of the way making sure you and your team deliver. We're here every step of the way making sure you and your team
+                    deliver
+                  </p>
+                </div>
+              </div>
+              <div class="col-lg-6">
+                <div class="logo-grid">
+                  <div class="row no-gutters">
+                    <div class="col-4 col-sm-3 mb-4">
+                      <div class="logo-grid-item">
+                        <img src="{% static 'assets/images/logo/logo.png' %}" alt="Logo grid Image" />
+                      </div>
+                    </div>
+                    <div class="col-4 col-sm-3 mb-4">
+                      <div class="logo-grid-item">
+                        <img src="{% static 'assets/images/logo/logo-2.png' %}" alt="Logo grid Image" />
+                      </div>
+                    </div>
+                    <div class="col-4 col-sm-3 mb-4">
+                      <div class="logo-grid-item">
+                        <img src="{% static 'assets/images/logo/logo-3.png' %}" alt="Logo grid Image" />
+                      </div>
+                    </div>
+                    <div class="col-4 col-sm-3 mb-4">
+                      <div class="logo-grid-item">
+                        <img src="{% static 'assets/images/logo/logo-4.png' %}" alt="Logo grid Image" />
+                      </div>
+                    </div>
+                    <div class="col-4 col-sm-3 mb-4">
+                      <div class="logo-grid-item">
+                        <img src="{% static 'assets/images/logo/logo-5.png' %}" alt="Logo grid Image" />
+                      </div>
+                    </div>
+                    <div class="col-4 col-sm-3 mb-4">
+                      <div class="logo-grid-item">
+                        <img src="{% static 'assets/images/logo/logo.png' %}" alt="Logo grid Image" />
+                      </div>
+                    </div>
+                    <div class="col-4 col-sm-3 mb-4">
+                      <div class="logo-grid-item">
+                        <img src="{% static 'assets/images/logo/logo-2.png' %}" alt="Logo grid Image" />
+                      </div>
+                    </div>
+                    <div class="col-4 col-sm-3 mb-4">
+                      <div class="logo-grid-item">
+                        <img src="{% static 'assets/images/logo/logo-3.png' %}" alt="Logo grid Image" />
+                      </div>
+                    </div>
+                    <div class="col-4 col-sm-3 mb-4">
+                      <div class="logo-grid-item">
+                        <img src="{% static 'assets/images/logo/logo-4.png' %}" alt="Logo grid Image" />
+                      </div>
+                    </div>
+                    <div class="col-4 col-sm-3 mb-4">
+                      <div class="logo-grid-item">
+                        <img src="{% static 'assets/images/logo/logo-2.png' %}" alt="Logo grid Image" />
+                      </div>
+                    </div>
+                    <div class="col-4 col-sm-3 mb-4">
+                      <div class="logo-grid-item">
+                        <img src="{% static 'assets/images/logo/logo-5.png' %}" alt="Logo grid Image" />
+                      </div>
+                    </div>
+                    <div class="col-4 col-sm-3 mb-4">
+                      <div class="logo-grid-item logo-grid-text">
+                        <h3 class="text-red m-auto">+30</h3>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Logo Grid Area -->
+
+      <!-- Testimonial Area -->
+      <section class="testimonial-area testimonial-area-two bg-white-800 wow fadeInUp animate__fast">
+        <div id="testimonial-2" class="swiper-container">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide">
+              <div class="testimonial-review">
+                <i class="fas fa-quote-left"></i>
+                <p>
+                  Continually harness functional e-business without global core competencies. Interactively pontificate client-focused web-readiness via quality
+                  scenarios. Professionally pursue collaborative
+                  <span>ideas rather than prospective imperatives.</span>
+                </p>
+                <div class="testimonial-author">
+                  <div class="testimonial-author-image">
+                    <img src="{% static 'assets/images/testimonial/testimonial-1.jpg' %}" alt="Testimonial" />
+                  </div>
+                  <div class="testimonial-author-name">
+                    <h4>Jesus Requena</h4>
+                    <span>Support Engineer, Aliexpress</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div class="testimonial-review">
+                <i class="fas fa-quote-left"></i>
+                <p>
+                  Continually harness functional e-business without global core competencies. Interactively pontificate client-focused web-readiness via quality
+                  scenarios. Professionally pursue collaborative
+                  <span>ideas rather than prospective imperatives.</span>
+                </p>
+                <div class="testimonial-author">
+                  <div class="testimonial-author-image">
+                    <img src="{% static 'assets/images/testimonial/testimonial-1.jpg' %}" alt="Testimonial" />
+                  </div>
+                  <div class="testimonial-author-name">
+                    <h4>Jesus Requena</h4>
+                    <span>Support Engineer, Aliexpress</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div class="testimonial-review">
+                <i class="fas fa-quote-left"></i>
+                <p>
+                  Continually harness functional e-business without global core competencies. Interactively pontificate client-focused web-readiness via quality
+                  scenarios. Professionally pursue collaborative
+                  <span>ideas rather than prospective imperatives.</span>
+                </p>
+                <div class="testimonial-author">
+                  <div class="testimonial-author-image">
+                    <img src="{% static 'assets/images/testimonial/testimonial-1.jpg' %}" alt="Testimonial" />
+                  </div>
+                  <div class="testimonial-author-name">
+                    <h4>Jesus Requena</h4>
+                    <span>Support Engineer, Aliexpress</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Testimonial Area -->
+
+      <!-- FAQs Area -->
+      <section class="faq-area wow fadeInUp animate__fast">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <div class="section-title-center">
+                <h2 class="font-bold mt-n3 mt-md-n4">Frequently asked questions</h2>
+                <p>Aenean amet netus aliquam elit eu, sagittis id natoque id. Purus augue fermentum dui aliquam dui vel.</p>
+              </div>
+            </div>
+            <div class="col-12">
+              <div class="accordion" id="projectAccordion">
+                <div class="accordion-item">
+                  <h2 class="accordion-header" id="project-headingOne">
+                    <button
+                      class="accordion-button collapsed"
+                      type="button"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#project-collapseOne"
+                      aria-expanded="false"
+                      aria-controls="project-collapseOne"
+                    >
+                      <span>Q1.</span> How can i use Landpagy?
+                    </button>
+                  </h2>
+                  <div id="project-collapseOne" class="accordion-collapse collapse" aria-labelledby="project-headingOne" data-bs-parent="#projectAccordion">
+                    <div class="accordion-body">
+                      <p>
+                        Follow these 6 steps and you’ll get your Help Scout account up and running in no time. If you'd like to get a full tour of Help Scout
+                        and all its features, attend one of our weekly live demos or take a video tour.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div class="accordion-item">
+                  <h2 class="accordion-header" id="project-headingTwo">
+                    <button
+                      class="accordion-button collapsed"
+                      type="button"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#project-collapseTwo"
+                      aria-expanded="false"
+                      aria-controls="project-collapseTwo"
+                    >
+                      <span>Q2.</span> When should I use a Tag?
+                    </button>
+                  </h2>
+                  <div id="project-collapseTwo" class="accordion-collapse collapse" aria-labelledby="project-headingTwo" data-bs-parent="#projectAccordion">
+                    <div class="accordion-body">
+                      <p>
+                        Follow these 6 steps and you’ll get your Help Scout account up and running in no time. If you'd like to get a full tour of Help Scout
+                        and all its features, attend one of our weekly live demos or take a video tour.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div class="accordion-item">
+                  <h2 class="accordion-header" id="project-headingThree">
+                    <button
+                      class="accordion-button collapsed"
+                      type="button"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#project-collapseThree"
+                      aria-expanded="false"
+                      aria-controls="project-collapseThree"
+                    >
+                      <span>Q3.</span> How can I make all this less work?
+                    </button>
+                  </h2>
+                  <div id="project-collapseThree" class="accordion-collapse collapse" aria-labelledby="project-headingThree" data-bs-parent="#projectAccordion">
+                    <div class="accordion-body">
+                      <p>
+                        Follow these 6 steps and you’ll get your Help Scout account up and running in no time. If you'd like to get a full tour of Help Scout
+                        and all its features, attend one of our weekly live demos or take a video tour.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div class="accordion-item">
+                  <h2 class="accordion-header" id="project-headingFour">
+                    <button
+                      class="accordion-button collapsed"
+                      type="button"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#project-collapseFour"
+                      aria-expanded="false"
+                      aria-controls="project-collapseFour"
+                    >
+                      <span>Q3.</span> What’s up, Docs?
+                    </button>
+                  </h2>
+                  <div id="project-collapseFour" class="accordion-collapse collapse" aria-labelledby="project-collapseFour" data-bs-parent="#projectAccordion">
+                    <div class="accordion-body">
+                      <p>
+                        Follow these 6 steps and you’ll get your Help Scout account up and running in no time. If you'd like to get a full tour of Help Scout
+                        and all its features, attend one of our weekly live demos or take a video tour.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div class="accordion-item">
+                  <h2 class="accordion-header" id="project-headingFive">
+                    <button
+                      class="accordion-button collapsed"
+                      type="button"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#project-collapseFive"
+                      aria-expanded="false"
+                      aria-controls="project-collapseFive"
+                    >
+                      <span>Q3.</span> What’s up, Docs?
+                    </button>
+                  </h2>
+                  <div id="project-collapseFive" class="accordion-collapse collapse" aria-labelledby="project-collapseFive" data-bs-parent="#projectAccordion">
+                    <div class="accordion-body">
+                      <p>
+                        Follow these 6 steps and you’ll get your Help Scout account up and running in no time. If you'd like to get a full tour of Help Scout
+                        and all its features, attend one of our weekly live demos or take a video tour.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- FAQs Area -->
+
+      <!-- CTA Area -->
+      <section class="cta-area section-padding-xl bg-red-150 wow fadeInUp animate__fast">
+        <div class="container">
+          <div class="row">
+            <div class="col-12 text-center">
+              <div class="section-title-center pb-8">
+                <h2 class="mt-n3 mt-md-n4">Get free for 14 Days</h2>
+                <p>Aenean amet netus aliquam elit eu, sagittis id natoque id. Purus augue fermentum dui aliquam dui vel.</p>
+              </div>
+              <form class="form-group mx-auto mt-0">
+                <input type="email" placeholder="Enter your email to book demo" />
+                <button type="submit" class="btn btn-red">Book A Demo</button>
+              </form>
+            </div>
+          </div>
+        </div>
+        <span class="shape7"></span>
+        <img class="shape8 d-none d-lg-block" src="{% static 'assets/images/shape/shape-8.svg' %}" alt="Shape" />
+      </section>
+      <!-- CTA Area -->
+    </main>
+    
+{% endblock content %}
+    

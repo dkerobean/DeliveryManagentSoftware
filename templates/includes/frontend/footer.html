@@ -1,3 +1,5 @@
+{% load static %}
+
 <footer class="footer-area bg-black">
       <div class="footer-top">
         <div class="container">
@@ -5,7 +7,7 @@
             <div class="col-lg-4">
               <div class="footer-content">
                 <span>The Most Trusted Online Course Platform for WordPress.</span>
-                <img src="assets/images/logo-3.png" alt="Footer Logo" />
+                <img src="{% static 'assets/images/logo-3.png' %}" alt="Footer Logo" />
               </div>
             </div>
             <div class="col-lg-8">
@@ -59,7 +61,7 @@
           <div class="row align-items-center">
             <div class="col-lg-5">
               <ul>
-                <li><img src="assets/images/logo-2.png" alt="Logo Image" /></li>
+                <li><img src="{% static 'assets/images/logo-2.png' %}" alt="Logo Image" /></li>
                 <li>
                   <span class="copyright">Copyright 2021, All Rights Reserved</span>
                 </li>

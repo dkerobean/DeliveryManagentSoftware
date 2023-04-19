@@ -1,0 +1,134 @@
+{% extends 'layouts/frontend_base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+    <main>
+      <!-- Sign Up Area -->
+      <section class="sign-up-wrapper overflow-hidden pt-215 pb-165">
+        <div class="container">
+          <div class="sign-up-box">
+            <div class="bg-shapes">
+              <div class="shape">
+                <img src="{% static 'assets/images/signup/shape2.svg' %}" alt="Shape" />
+              </div>
+              <div class="shape" data-parallax='{"x":-30, "y": 0, "rotateY":0}'>
+                <img src="{% static 'assets/images/signup/shape3.svg' %}" alt="Shape" />
+              </div>
+              <div class="shape">
+                <img src="{% static 'assets/images/signup/shape4.svg' %}" alt="Shape" />
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-6">
+                <div class="form-images d-lg-block d-none">
+                  <div
+                    class="shapes object-element"
+                    data-paroller-factor="0.1"
+                    data-paroller-type="foreground"
+                    data-paroller-direction="horizontal"
+                    data-paroller-transition="transform .2s linear"
+                  ></div>
+                  <div class="shapes object-element"></div>
+                  <div
+                    class="shapes object-element"
+                    data-paroller-factor="0.05"
+                    data-paroller-type="foreground"
+                    data-paroller-direction="horizontal"
+                    data-paroller-transition="transform .2s linear"
+                  ></div>
+                  <div
+                    class="shapes object-element"
+                    data-paroller-factor="0.05"
+                    data-paroller-type="foreground"
+                    data-paroller-transition="transform .2s linear"
+                  ></div>
+                  <div
+                    class="shapes object-element"
+                    data-paroller-type="foreground"
+                    data-paroller-factor="0.1"
+                    data-paroller-transition="transform .2s linear"
+                  ></div>
+                  <div class="shapes">
+                    <img src="{% static 'assets/images/signup/shape1.svg' %}" alt="Shape" />
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-lg-6">
+                <div class="form-wrapper">
+                  <div class="text-center">
+                    <h2 class="heading-3 mb-15">Create your account</h2>
+                    <p class="heading-text">Redownload themes, get support, and review themes.</p>
+
+                    <ul class="create-with-list mt-45 mb-35">
+                      <li>
+                        <a href="signup.html#"><img src="{% static 'assets/images/signup/icon1.svg' %}" alt="Icon" /></a>
+                      </li>
+                      <li>
+                        <a href="signup.html#"><img src="{% static 'assets/images/signup/icon2.svg' %}" alt="Icon" /></a>
+                      </li>
+                      <li>
+                        <a href="signup.html#"><img src="{% static 'assets/images/signup/icon3.svg' %}" alt="Icon" /></a>
+                      </li>
+                      <li>
+                        <a href="signup.html#"><img src="{% static 'assets/images/signup/icon4.svg' %}" alt="Icon" /></a>
+                      </li>
+                    </ul>
+
+                    <span class="divider">or</span>
+                  </div>
+
+                  <form action="signup.html#" class="sign-up-form">
+                    <div class="row">
+                      <div class="col-md-6">
+                        <input type="text" placeholder="First Name*" />
+                      </div>
+                      <div class="col-md-6 mt-4 mt-md-0">
+                        <input type="text" placeholder="Last Name*" />
+                      </div>
+                      <div class="col-md-12 mt-20">
+                        <input type="email" placeholder="Email address*" />
+                      </div>
+                      <div class="col-md-12 mt-20">
+                        <input type="password" placeholder="Password*" />
+                      </div>
+                      <div class="col-md-12 mt-10">
+                        <p class="meta-text">Make sure it's at least 15 characters OR at least 8 characters including a number and a lowercase letter.</p>
+                      </div>
+                      <div class="col-md-12">
+                        <input type="checkbox" id="remember" />
+                        <label class="check-text" for="remember"> Remember me </label>
+                      </div>
+                      <div class="col-md-12">
+                        <input type="checkbox" id="news" />
+                        <label class="check-text" for="news"> I’d like being informed about latest news and tips </label>
+                      </div>
+                      <div class="col-md-12 mt-30">
+                        <input class="btn btn-red" type="submit" value="Sign Up" />
+                      </div>
+
+                      <div class="col-md-12">
+                        <p class="form-text mt-20">
+                          Already have an account?
+                          <a href="https://html.spiderthemes-demos.com/landpagy/signin.html">Sign in</a>
+                        </p>
+                        <p class="form-text mt-15">
+                          By clicking “Sign up” you agree to our
+                          <a href="signup.html#">Terms of Service.</a>
+                        </p>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Sign Up Area -->
+    </main>
+    
+{% endblock content %}
+    
