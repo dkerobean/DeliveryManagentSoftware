@@ -72,3 +72,10 @@ def userSignUp(request):
 def handler404(request, exception):
     
     return render(request, 'frontend/404.html', status=404)
+
+
+""" BOOK DELIVERY """
+
+def bookDelivery(request):
+    
+    return render(request, 'frontend/book_delivery.html')

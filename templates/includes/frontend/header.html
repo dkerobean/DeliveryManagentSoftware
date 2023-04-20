@@ -29,80 +29,11 @@
           </button>
           <div class="collapse navbar-collapse justify-content-end" id="navbarText">
             <ul class="navbar-nav menu mx-auto">
-              <li class="nav-item dropdown submenu mega-home active">
-                <a href="https://html.spiderthemes-demos.com/landpagy/index.html" class="nav-link dropdown-toggle active">Home</a>
-                <i class="arrow_carrot-right mobile_dropdown_icon" aria-hidden="false" data-bs-toggle="dropdown"></i>
-                <ul class="dropdown-menu">
-                  <li class="nav-item active">
-                    <a href="https://html.spiderthemes-demos.com/landpagy/index.html" class="nav-link">
-                      <img src="{% static 'assets/images/home_demos/project.png' %}" alt="Demo" />
-                      <span>Project Management</span>
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a href="https://html.spiderthemes-demos.com/landpagy/index-software.html" class="nav-link">
-                      <img src="{% static 'assets/images/home_demos/software.png' %}" alt="Demo" />
-                      <span>Software Company</span>
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a href="https://html.spiderthemes-demos.com/landpagy/index-software2.html" class="nav-link">
-                      <img src="{% static 'assets/images/home_demos/software-2.png' %}" alt="Demo" />
-                      <span>Software Demo Landing</span>
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a href="https://html.spiderthemes-demos.com/landpagy/index-payment.html" class="nav-link">
-                      <img src="{% static 'assets/images/home_demos/payment.png' %}" alt="Demo" />
-                      <span>Payment Processing</span>
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a href="https://html.spiderthemes-demos.com/landpagy/index-billing.html" class="nav-link">
-                      <img src="{% static 'assets/images/home_demos/billing.png' %}" alt="Demo" />
-                      <span>Account Billing Software</span>
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a href="https://html.spiderthemes-demos.com/landpagy/index-cloud.html" class="nav-link">
-                      <img src="{% static 'assets/images/home_demos/cloud.png' %}" alt="Demo" />
-                      <span>Cloud Saas</span>
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a href="https://html.spiderthemes-demos.com/landpagy/index-app.html" class="nav-link">
-                      <img src="{% static 'assets/images/home_demos/app.png' %}" alt="Demo" />
-                      <span>Mobile App Landing</span>
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a href="https://html.spiderthemes-demos.com/landpagy/index-hrm.html" class="nav-link">
-                      <img src="{% static 'assets/images/home_demos/hrm.png' %}" alt="Demo" />
-                      <span>HRM Software</span>
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a href="https://html.spiderthemes-demos.com/landpagy/index-pos.html" class="nav-link">
-                      <img src="{% static 'assets/images/home_demos/pos.png' %}" alt="Demo" />
-                      <span>POS Software</span>
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a href="https://html.spiderthemes-demos.com/landpagy/index-proto.html" class="nav-link">
-                      <img src="{% static 'assets/images/home_demos/proto.png' %}" alt="Demo" />
-                      <span>Prototype</span>
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a href="https://html.spiderthemes-demos.com/landpagy/help-center.html" class="nav-link">
-                      <img src="{% static 'assets/images/home_demos/help.png' %}" alt="Demo" />
-                      <span>Help Center</span>
-                    </a>
-                  </li>
-                </ul>
+              <li class="nav-item mega-home">
+                <a href="{% url 'book-delivery' %}" class="nav-link">Book a delivery</a>              
               </li>
               <li class="nav-item dropdown submenu active">
-                <a href="index.html#" class="nav-link dropdown-toggle">Pages</a>
+                <a href="index.html#" class="nav-link dropdown-toggle">Track Order</a>
                 <i class="arrow_carrot-right mobile_dropdown_icon" aria-hidden="false" data-bs-toggle="dropdown"></i>
                 <ul class="dropdown-menu">
                   <li class="nav-item">
