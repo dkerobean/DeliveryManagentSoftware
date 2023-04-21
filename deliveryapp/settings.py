@@ -73,6 +73,8 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'deliveryapp.wsgi.application'
 
+GOOGLE_MAPS_API_KEY = 'AIzaSyBM2cxD_neyYsBVSms1EV_gZvy1obbkIXw'
+
 
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
