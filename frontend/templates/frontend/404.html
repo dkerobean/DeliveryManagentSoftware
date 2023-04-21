@@ -1,0 +1,52 @@
+{% extends 'layouts/frontend_base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+    <main>
+      <!-- 404 wrapper Area -->
+      <section class="wrapper-404 pt-180 pb-140">
+        <div class="bg-shapes">
+          <div class="shape">
+            <img src="{% static 'assets/images/404/shape1.svg' %}" alt="Shape" />
+          </div>
+          <div class="shape">
+            <img src="{% static 'assets/images/404/shape2.svg' %}" alt="Shape" />
+          </div>
+          <div class="shape">
+            <img src="{% static 'assets/images/404/shape3.svg' %}" alt="Shape" />
+          </div>
+          <div class="shape">
+            <img src="{% static 'assets/images/404/shape4.svg' %}" alt="Shape" />
+          </div>
+          <div class="shape">
+            <img src="{% static 'assets/images/404/shape5.svg' %}" alt="Shape" />
+          </div>
+          <div class="shape">
+            <img src="{% static 'assets/images/404/shape6.svg' %}" alt="Shape" />
+          </div>
+          <div class="shape">
+            <img src="{% static 'assets/images/404/shape7.svg' %}" alt="Shape" />
+          </div>
+          <div class="shape">
+            <img src="{% static 'assets/images/404/shape8.svg' %}" alt="Shape" />
+          </div>
+        </div>
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <div class="wrapp-404 text-center">
+                <img class="mb-60 mx-auto" src="{% static 'assets/images/404/404.svg' %}" alt="404" />
+                <p class="text-404 mb-50">We’re sorry the page you’re looking for seems lost in the space</p>
+                <a href="{% url 'home' %}" class="btn btn-red">Back to home</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- 404 wrapper Area -->
+    </main>
+    
+{% endblock content %}
+    
