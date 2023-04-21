@@ -1,0 +1,121 @@
+{% extends 'layouts/frontend_base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+    <main>
+      <!-- Sign In Area -->
+      <section class="sign-up-wrapper overflow-hidden pt-215 pb-165">
+        <div class="container">
+          <div class="sign-up-box">
+            <div class="bg-shapes">
+              <div class="shape">
+                <img src="{% static 'assets/images/signup/shape2.svg' %}" alt="Shape" />
+              </div>
+              <div class="shape" data-parallax='{"x":-30, "y": 0, "rotateY":0}'>
+                <img src="{% static 'assets/images/signup/shape3.svg' %}" alt="Shape" />
+              </div>
+              <div class="shape">
+                <img src="{% static 'assets/images/signup/shape4.svg' %}" alt="Shape" />
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-6">
+                <div class="form-images d-lg-block d-none">
+                  <div
+                    class="shapes object-element"
+                    data-paroller-factor="0.1"
+                    data-paroller-type="foreground"
+                    data-paroller-direction="horizontal"
+                    data-paroller-transition="transform .2s linear"
+                  ></div>
+                  <div class="shapes object-element"></div>
+                  <div
+                    class="shapes object-element"
+                    data-paroller-factor="0.05"
+                    data-paroller-type="foreground"
+                    data-paroller-direction="horizontal"
+                    data-paroller-transition="transform .2s linear"
+                  ></div>
+                  <div
+                    class="shapes object-element"
+                    data-paroller-factor="0.05"
+                    data-paroller-type="foreground"
+                    data-paroller-transition="transform .2s linear"
+                  ></div>
+                  <div
+                    class="shapes object-element"
+                    data-paroller-type="foreground"
+                    data-paroller-factor="0.1"
+                    data-paroller-transition="transform .2s linear"
+                  ></div>
+                  <div class="shapes">
+                    <img src="{% static 'assets/images/signup/shape1.svg' %}" alt="Shape" />
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-lg-6">
+                <div class="form-wrapper form-wrapper-signin">
+                  <div class="text-center">
+                    <h2 class="heading-3">Sign in to Landpagy</h2>
+
+                    <ul class="create-with-list mt-45 mb-35">
+                      <li>
+                        <a href="signin.html#"><img src="{% static 'assets/images/signup/icon1.svg' %}" alt="Icon" /></a>
+                      </li>
+                      <li>
+                        <a href="signin.html#"><img src="{% static 'assets/images/signup/icon2.svg' %}" alt="Icon" /></a>
+                      </li>
+                      <li>
+                        <a href="signin.html#"><img src="{% static 'assets/images/signup/icon3.svg' %}" alt="Icon" /></a>
+                      </li>
+                      <li>
+                        <a href="signin.html#"><img src="{% static 'assets/images/signup/icon4.svg' %}" alt="Icon" /></a>
+                      </li>
+                    </ul>
+
+                    <span class="divider">or</span>
+                  </div>
+
+                  <form action="{% url 'user-login' %}" class="sign-up-form" method="POST">
+                    {% csrf_token %}
+                    <div class="row">
+                      <div class="col-md-12">
+                        <input type="text" placeholder="Username" name="username" autocapitalize="none" />
+                      </div>
+                      <div class="col-md-12 mt-20">
+                        <input type="password" placeholder="Password*" name="password" />
+                      </div>
+                      <div class="col-6">
+                        <input type="checkbox" id="remember" />
+                        <label class="check-text" for="remember"> Remember me </label>
+                      </div>
+                      <div class="col-6">
+                        <a class="forgot-link float-end" href="#">Forgot Password?</a>
+                      </div>
+                      <div class="col-md-12 mt-30">
+                        <input class="btn btn-red" type="submit" value="Sign In" />
+                      </div>
+
+                      <div class="col-md-12">
+                        <p class="form-text mt-20">
+                          Don’t have an account?
+                          <br />
+                          <a href="{% url 'user-register' %}">Create account</a>
+                        </p>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Sign In Area -->
+    </main>
+    
+{% endblock content %}
+    
