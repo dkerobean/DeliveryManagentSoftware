@@ -21,3 +21,18 @@
     <script src="{% static 'assets/js/plugin/jquery.paroller.js' %}"></script>
     <script src="{% static 'assets/js/script.js' %}"></script>
     <script src="{% static 'assets/js/plugin/jquery.nice-select.min.js'%}"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key={{google_api_key}}&libraries=places"></script>
+
+    <script>
+        var locationInput = document.getElementById('pickup-location');
+        var autocomplete = new google.maps.places.Autocomplete(locationInput);
+
+        var locationInput = document.getElementById('destination-location');
+        var autocomplete = new google.maps.places.Autocomplete(locationInput);
+
+        autocomplete.addListener('place_changed', function() {
+        var place = autocomplete.getPlace();
+        
+        });
+
+    </script>

@@ -1,8 +1,12 @@
+from math import radians, sin, cos, sqrt, atan2
+from django.shortcuts import render
+import requests
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from django.contrib.auth import login, logout, authenticate
 from django.contrib import messages
 from .forms import CustomUserCreationForm
+from django.conf import settings
 
 
 """ HOME PAGE """
@@ -78,4 +82,36 @@ def handler404(request, exception):
 
 def bookDelivery(request):
     
-    return render(request, 'frontend/book_delivery.html')
+    google_api_key = getattr(settings, 'GOOGLE_MAPS_API_KEY', None)
+    
+    if request.method == 'POST':
+        
+        pickup_location = request.POST.get('pickup-location')
+        destination_location = request.POST.get('destination-location')
+        
+        # Getting Geocode Data For The Two Locations 
+        geocoding_url1 = 'https://maps.googleapis.com/maps/api/geocode/json?address=' + \
+            location1 + '&key=' + google_api_key
+        geocoding_response1 = requests.get(geocoding_url1)
+        geocoding_data1 = geocoding_response1.json()
+
+        geocoding_url2 = 'https://maps.googleapis.com/maps/api/geocode/json?address=' + \
+            location2 + '&key=' + google_api_key
+        geocoding_response2 = requests.get(geocoding_url2)
+        geocoding_data2 = geocoding_response2.json()
+        
+        # Get the latitude and longitude of the two locations
+        location1_lat = geocoding_data1['results'][0]['geometry']['pickup-location']['lat']
+        location1_lng = geocoding_data1['results'][0]['geometry']['pickup-location']['lng']
+        
+        location2_lat = geocoding_data2['results'][0]['geometry']['destination-location']['lat']
+        location2_lng = geocoding_data2['results'][0]['geometry']['destination-location']['lng']
+    
+    context = {
+        'google_api_key': google_api_key
+    }
+    
+    return render(request, 'frontend/book_delivery.html', context)
+
+
+
