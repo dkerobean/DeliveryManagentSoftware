@@ -51,16 +51,17 @@
                       </div>
                       <div class="contact-form-name mt-5">
                         <label for="topic">Pickup (Where are we picking the package from?)</label>
-                        <input type="text" id="pickup-location" placeholder="Please provide an exact or aproximate location" />
+                        <input type="text" id="pickup-location" name="pickup-location" placeholder="Please provide an exact or aproximate location" />
                       </div>
                       <div class="contact-form-name">
                         <label for="phone">Destination (Where are we delivering the package to?)</label>
-                        <input type="text" id="destination-location" placeholder="Please provide an exact or aproximate location" />
+                        <input type="text" id="destination-location" name="destination-location" placeholder="Please provide an exact or aproximate location" />
                       </div>
                     </div>
                     <div class="col-12">
                       <div class="contact-form-button">
-                        <a href="#" class="btn btn-red">Get Estimate</a>
+                        <button type="submit" class="btn btn-red">Get Estimate</button>
+                        {% comment %} <a href="" class="btn btn-red">Get Estimate</a> {% endcomment %}
                       </div>
                     </div>
                   </div>
