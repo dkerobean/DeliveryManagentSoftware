@@ -1,8 +1,12 @@
+from django.urls import reverse
+from django.shortcuts import render
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from django.contrib.auth import login, logout, authenticate
 from django.contrib import messages
 from .forms import CustomUserCreationForm
+from django.conf import settings
+import googlemaps
 
 
 """ HOME PAGE """
@@ -78,4 +82,58 @@ def handler404(request, exception):
 
 def bookDelivery(request):
     
-    return render(request, 'frontend/book_delivery.html')
+    google_api_key = getattr(settings, 'GOOGLE_MAPS_API_KEY', None)
+    
+    if request.method == "POST":
+        pickup_location = request.POST["pickup-location"]
+        destination_location = request.POST["destination-location"]
+        
+        # Get Geocodes 
+        gmaps = googlemaps.Client(google_api_key)
+        location1 = gmaps.geocode(pickup_location)[0]['geometry']['location']
+        location2 = gmaps.geocode(destination_location)[0]['geometry']['location']
+        
+        # Calculate Distance
+        distance_result = gmaps.distance_matrix((location1['lat'], location1['lng']), (location2['lat'], location2['lng']))
+        distance = distance_result['rows'][0]['elements'][0]['distance']['value']
+        distance_km = distance // 1000 
+        
+        request.session['distance_km'] = distance_km
+        request.session['pickup_location'] = pickup_location
+        request.session['destination_location'] = destination_location
+        
+        return redirect('confirm-delivery')
+    
+    
+    context = {
+        'google_api_key': google_api_key
+    }
+    
+    return render(request, 'frontend/book_delivery.html', context)
+
+
+def confirmDelivery(request):
+    
+    google_api_key = getattr(settings, 'GOOGLE_MAPS_API_KEY', None)
+    
+    pickup_location = request.session['pickup_location']
+    destination_location = request.session['destination_location']
+    distance = request.session['distance_km']
+    
+    price = 2 * distance 
+
+
+    context = {
+        'google_api_key': google_api_key,
+        'pickup_location':pickup_location, 
+        'destination_location':destination_location,
+        'distance':distance, 
+        'price':price
+    }
+    
+    return render(request, 'frontend/confirm_delivery.html', context)
+
+    
+    
+
+
