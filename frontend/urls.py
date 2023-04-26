@@ -13,6 +13,8 @@ urlpatterns = [
     path('book-delivery/', views.bookDelivery, name="book-delivery"), 
     path('confirm_delivery/', views.confirmDelivery, name="confirm-delivery"), 
     
+    path('contact/', views.contactPage, name="contact"), 
+    
     
 ]
 

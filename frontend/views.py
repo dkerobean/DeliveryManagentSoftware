@@ -8,13 +8,35 @@ from .forms import CustomUserCreationForm
 from django.conf import settings
 import googlemaps
 import math
-from .models import BookDelivery
+from .models import BookDelivery, Contact
 
 
 """ HOME PAGE """
+
 def homePage(request):    
     
     return render(request, 'frontend/index.html')
+
+
+"""CONTACT PAGE"""
+
+def contactPage(request):
+    
+    if request.method == "POST":
+        topic = request.POST["topic"]
+        name = request.POST["name"]
+        email = request.POST["email"]
+        phone = request.POST["phone"]
+        message = request.POST["message"]
+        
+        contact = Contact(topic=topic, name=name, email=email, 
+                          phone=phone, message=message)
+        contact.save()
+        messages.success(request, "Message Sent Successfully")
+        return redirect('home')
+        
+            
+    return render(request, 'frontend/contact.html')
 
 
 """ USER AUTH PAGES """

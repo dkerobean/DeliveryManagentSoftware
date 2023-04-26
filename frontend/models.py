@@ -61,10 +61,20 @@ class BookDelivery(models.Model):
         return order_number
 
     
-        
-    
     def __str__(self):
         return self.item
+    
+
+class Contact(models.Model):
+    name = models.CharField(max_length=200, blank=True, null=True)
+    topic = models.CharField(max_length=200, blank=True, null=True)
+    email = models.EmailField(max_length=254)
+    phone = models.CharField(max_length=200, blank=True, null=True)
+    message = models.TextField()
+    
+    def __str__(self):
+        return self.name
+    
     
     
     
