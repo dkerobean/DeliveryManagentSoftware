@@ -18,6 +18,20 @@ class Profile(models.Model):
         return self.name
     
     
+class BookDelivery(models.Model):
+    item = models.CharField(max_length=200, blank=True, null=True)
+    item_type = models.CharField(max_length=200, blank=True, null=True)
+    pickup_location = models.CharField(max_length=250, blank=True, null=True)
+    destination_location = models.CharField(max_length=250, blank=True, null=True)
+    sender_contact = models.CharField(max_length=200, blank=True, null=True)
+    reciever_contact = models.CharField(max_length=200, blank=True, null=True)
+    
+    def __str__(self):
+        return self.item
+    
+    
+    
+    
     
 
 
