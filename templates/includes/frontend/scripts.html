@@ -22,8 +22,20 @@
     <script src="{% static 'assets/js/script.js' %}"></script>
     <script src="{% static 'assets/js/plugin/jquery.nice-select.min.js'%}"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key={{google_api_key}}&libraries=places"></script>
-    {% comment %} <script src="https://maps.googleapis.com/maps/api/js?key={{google_api_key}}&callback=myMap" async defer></script> {% endcomment %}
+    <!-- Toastr -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
+    
+    {% if messages %}
+
+    {% for message in messages %}
+        <script>
+            toastr.{{message.tags}}("{{message}}");
+        </script>
+    {% endfor %}
+        
+    {% endif %}
+        
     <script>
         var locationInput = document.getElementById('pickup-location');
         var autocomplete = new google.maps.places.Autocomplete(locationInput, {

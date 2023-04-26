@@ -37,25 +37,25 @@
                     <div class="col-lg-12">
                       <div class="contact-form-select mt-5">
                         <label for="topic">I want to</label>
-                        <select id="topic" class="nice-select-common select-topic">
+                        <select id="topic" name="item" required class="nice-select-common select-topic">
                           <option data-display="What do you want to send"></option>
-                          <option value="1">Send a package</option>
+                          <option value="Send a package" >Send a package</option>
                         </select>
                       </div>
                       <div class="contact-form-name mt-5">
                         <label for="topic">What kind of item</label>
-                        <select id="topic" class="nice-select-common select-topic">
+                        <select id="topic" required name="item-type" class="nice-select-common select-topic">
                           <option data-display="What kind of item is it"></option>
-                          <option value="1">Document and Books</option>
+                          <option value="Document and Books" >Document and Books</option>
                         </select>
                       </div>
                       <div class="contact-form-name mt-5">
                         <label for="topic">Pickup (Where are we picking the package from?)</label>
-                        <input type="text" id="pickup-location" name="pickup-location" placeholder="Please provide an exact or aproximate location" />
+                        <input type="text" id="pickup-location" name="pickup-location" placeholder="Please provide an exact or aproximate location" required />
                       </div>
                       <div class="contact-form-name">
                         <label for="phone">Destination (Where are we delivering the package to?)</label>
-                        <input type="text" id="destination-location" name="destination-location" placeholder="Please provide an exact or aproximate location" />
+                        <input type="text" id="destination-location" name="destination-location" placeholder="Please provide an exact or aproximate location" required/>
                       </div>
                     </div>
                     <div class="col-12">

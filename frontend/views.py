@@ -7,12 +7,36 @@ from django.contrib import messages
 from .forms import CustomUserCreationForm
 from django.conf import settings
 import googlemaps
+import math
+from .models import BookDelivery, Contact
 
 
 """ HOME PAGE """
+
 def homePage(request):    
     
     return render(request, 'frontend/index.html')
+
+
+"""CONTACT PAGE"""
+
+def contactPage(request):
+    
+    if request.method == "POST":
+        topic = request.POST["topic"]
+        name = request.POST["name"]
+        email = request.POST["email"]
+        phone = request.POST["phone"]
+        message = request.POST["message"]
+        
+        contact = Contact(topic=topic, name=name, email=email, 
+                          phone=phone, message=message)
+        contact.save()
+        messages.success(request, "Message Sent Successfully")
+        return redirect('home')
+        
+            
+    return render(request, 'frontend/contact.html')
 
 
 """ USER AUTH PAGES """
@@ -85,6 +109,9 @@ def bookDelivery(request):
     google_api_key = getattr(settings, 'GOOGLE_MAPS_API_KEY', None)
     
     if request.method == "POST":
+        
+        item = request.POST["item"]
+        item_type = request.POST["item-type"]
         pickup_location = request.POST["pickup-location"]
         destination_location = request.POST["destination-location"]
         
@@ -96,11 +123,13 @@ def bookDelivery(request):
         # Calculate Distance
         distance_result = gmaps.distance_matrix((location1['lat'], location1['lng']), (location2['lat'], location2['lng']))
         distance = distance_result['rows'][0]['elements'][0]['distance']['value']
-        distance_km = distance // 1000 
+        distance_km = distance / 1000 
         
         request.session['distance_km'] = distance_km
         request.session['pickup_location'] = pickup_location
         request.session['destination_location'] = destination_location
+        request.session['item'] = item 
+        request.session['item_type'] = item_type
         
         return redirect('confirm-delivery')
     
@@ -116,11 +145,27 @@ def confirmDelivery(request):
     
     google_api_key = getattr(settings, 'GOOGLE_MAPS_API_KEY', None)
     
+    
     pickup_location = request.session['pickup_location']
     destination_location = request.session['destination_location']
     distance = request.session['distance_km']
+    item = request.session['item']
+    item_type = request.session['item_type']
     
+    # Price of delivery
     price = 2 * distance 
+    price_1 = math.ceil(price)
+    
+    if request.method == "POST":
+        sender_contact = request.POST['sender_contact']
+        reciever_contact = request.POST['reciever_contact']
+        
+        delivery_details = BookDelivery(item=item, item_type=item_type, pickup_location=pickup_location, 
+                                        destination_location=destination_location, sender_contact=sender_contact, 
+                                        reciever_contact=reciever_contact)
+        delivery_details.save()
+        messages.success(request, 'Delivery Booked, You Will Recieve A Call')
+        return redirect('home')
 
 
     context = {

@@ -22,11 +22,11 @@
                     <div class="col-lg-12">
                       <div class="contact-form-name">
                         <label for="topic">Your contact</label>
-                        <input type="text"/>
+                        <input name="sender_contact" type="text" required maxlength=10/>
                       </div>
                       <div class="contact-form-name">
                         <label for="topic">Recievers contact</label>
-                        <input type="text" id="phone" />
+                        <input name="reciever_contact" type="text" id="phone" required maxlength=10 />
                       </div>
                     </div>
                     <div class="col-6">
@@ -36,7 +36,7 @@
                     </div>
                     <div class="col-6">
                             <div class="contact-form-button">
-                                <a href="#" class="btn btn-red">Confirm</a>
+                                <button type="submit" class="btn btn-red" required >Confirm</button>
                             </div>
                     </div>
                   </div>
