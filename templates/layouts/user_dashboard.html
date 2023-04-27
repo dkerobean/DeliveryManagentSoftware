@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+
+{% include 'includes/user_dashboard/head.html' %}
+
+<body class="app sidebar-mini ltr light-mode">
+
+
+    <!-- GLOBAL-LOADER -->
+    <div id="global-loader">
+        <img src="../asset/images/loader.svg" class="loader-img" alt="Loader">
+    </div>
+    <!-- /GLOBAL-LOADER -->
+
+    <!-- PAGE -->
+    <div class="page">
+        <div class="page-main">
+
+            <!-- app-Header -->
+                {% include 'includes/user_dashboard/top_header.html' %}
+            <!-- /app-Header -->
+
+            <!--APP-SIDEBAR-->
+                {% include 'includes/user_dashboard/sidebar.html' %}
+            <!--/APP-SIDEBAR-->
+
+            <!--app-content open-->
+                
+                {% block content %}
+                    
+                {% endblock content %}
+                    
+            <!--app-content close-->
+
+        </div>
+
+        <!-- Sidebar-right -->
+            {% include 'includes/user_dashboard/right_sidebar.html' %}
+        <!--/Sidebar-right-->
+
+        <!-- Country-selector modal-->
+            {% include 'includes/user_dashboard/country.html' %}
+        <!-- Country-selector modal-->
+
+        <!-- FOOTER -->
+        <footer class="footer">
+            <div class="container">
+                <div class="row align-items-center flex-row-reverse">
+                    <div class="col-md-12 col-sm-12 text-center">
+                        Copyright © <span id="year"></span> <a href="javascript:void(0)">Sash</a>. Designed with <span
+                            class="fa fa-heart text-danger"></span> by <a href="javascript:void(0)"> Spruko </a> All rights reserved.
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- FOOTER END -->
+
+    <!-- BACK-TO-TOP -->
+    <a href="#top" id="back-to-top"><i class="fa fa-angle-up"></i></a>
+
+    {% include 'includes/user_dashboard/scripts.html' %}
+
+</body>
+
+</html>
