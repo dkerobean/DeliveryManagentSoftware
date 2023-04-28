@@ -12,9 +12,12 @@ class Profile(models.Model):
     name = models.CharField(max_length=200, blank=True, null=True)
     email = models.EmailField(max_length=200, blank=True, null=True)
     username = models.CharField(max_length=200, blank=True, null=True)
+    website = models.CharField(max_length=200, blank=True, null=True)
     location = models.CharField(max_length=200, blank=True, null=True)
     profile_image = models.ImageField(null=True, blank=True,
                                       upload_to='profiles', default='profiles/user-default.png')
+    id = models.UUIDField(default=uuid.uuid4, unique=True,
+                          primary_key=True, editable=False)
     
     
     def __str__(self):
@@ -35,8 +38,8 @@ class BookDelivery(models.Model):
     STATUS_CHOICES = [
         ('P', 'Pending'), 
         ('A', 'Assigned'), 
-        ('PU', 'PickedUp'), 
-        ('D', 'Delivered')
+        ('I', 'In-progress'), 
+        ('C', 'Completed')
     ]
     order_status = models.CharField(max_length=2, choices=STATUS_CHOICES, default='P')
     
@@ -71,6 +74,8 @@ class Contact(models.Model):
     email = models.EmailField(max_length=254)
     phone = models.CharField(max_length=200, blank=True, null=True)
     message = models.TextField()
+    id = models.UUIDField(default=uuid.uuid4, unique=True,
+                          primary_key=True, editable=False)
     
     def __str__(self):
         return self.name
