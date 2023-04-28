@@ -15,7 +15,7 @@ def homePage(request):
 @login_required(login_url="user-login")
 def editProfile(request, pk):
     
-    user = User.objects.get(id=pk)
+    user = Profile.objects.get(id=pk)
     form = ProfileForm(instance=user)
     
     if request.method == "POST":
