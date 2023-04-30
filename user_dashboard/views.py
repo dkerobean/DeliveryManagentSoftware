@@ -36,6 +36,14 @@ def editProfile(request, pk):
 
 
 @login_required(login_url="user-login")
-def ordersPage(request):
+def ordersPage(request, pk):
     
-    return render(request, 'user_dashboard/orders.html')
+    user = Profile.objects.get(id=pk)
+    deliveries = user.deliveries.all()
+    
+    context = {
+        'deliveries':deliveries       
+    }
+    
+    
+    return render(request, 'user_dashboard/orders.html', context)

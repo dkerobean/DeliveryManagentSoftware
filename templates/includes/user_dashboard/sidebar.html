@@ -32,7 +32,7 @@
                                 <h3>Application</h3>
                             </li>
                             <li>
-                                <a class="side-menu__item has-link" href="{% url 'user_order'  %}"><i
+                                <a class="side-menu__item has-link" href="{% url 'user_order' request.user.profile.id  %}"><i
                                         class="side-menu__icon fe fe-package"></i><span
                                         class="side-menu__label">Orders</span></a>
                             </li>

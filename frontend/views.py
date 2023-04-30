@@ -8,7 +8,8 @@ from .forms import CustomUserCreationForm
 from django.conf import settings
 import googlemaps
 import math
-from .models import BookDelivery, Contact
+from .models import BookDelivery, Contact, Profile
+from django.contrib.auth.models import AnonymousUser
 
 
 """ HOME PAGE """
@@ -146,6 +147,13 @@ def confirmDelivery(request):
     google_api_key = getattr(settings, 'GOOGLE_MAPS_API_KEY', None)
     
     
+    # Check if user is autenticated or not
+    if not isinstance(request.user, AnonymousUser):
+        profile = request.user.profile
+    else:
+        profile = ''
+
+
     pickup_location = request.session['pickup_location']
     destination_location = request.session['destination_location']
     distance = request.session['distance_km']
@@ -160,7 +168,7 @@ def confirmDelivery(request):
         sender_contact = request.POST['sender_contact']
         reciever_contact = request.POST['reciever_contact']
         
-        delivery_details = BookDelivery(item=item, item_type=item_type, pickup_location=pickup_location, 
+        delivery_details = BookDelivery(profile=profile, item=item, item_type=item_type, pickup_location=pickup_location, 
                                         destination_location=destination_location, sender_contact=sender_contact, 
                                         reciever_contact=reciever_contact)
         delivery_details.save()

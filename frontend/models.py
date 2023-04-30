@@ -25,6 +25,8 @@ class Profile(models.Model):
     
     
 class BookDelivery(models.Model):
+    profile = models.ForeignKey(
+        Profile, on_delete=models.CASCADE, related_name='deliveries', null=True, blank=True)
     id = models.UUIDField(default=uuid.uuid4, unique=True,
                           primary_key=True, editable=False)
     item = models.CharField(max_length=200, blank=True, null=True)

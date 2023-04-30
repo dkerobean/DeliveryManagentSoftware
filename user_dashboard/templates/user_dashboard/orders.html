@@ -79,8 +79,8 @@
                                                                             </tr>
                                                                         </thead>
                                                                         <tbody>
-                                                                            
-                                                                            <tr class="border-bottom">
+                                                                            {% for delivery in deliveries %}
+                                                                                <tr class="border-bottom">
                                                                                 <td class="text-center">
                                                                                     <div class="mt-0 mt-sm-2 d-block">
                                                                                         <h6
@@ -144,6 +144,9 @@
                                                                                     </div>
                                                                                 </td>
                                                                             </tr>
+                                                                            {% endfor %}
+                                                                                
+                                                                            
                                                                         </tbody>
                                                                     </table>
                                                                 </div>
