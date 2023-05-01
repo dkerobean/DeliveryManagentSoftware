@@ -40,6 +40,7 @@ INSTALLED_APPS = [
 
     'frontend.apps.FrontendConfig', 
     'user_dashboard.apps.UserDashboardConfig',
+    'admin_dashboard.apps.AdminDashboardConfig',
 ]
 
 MIDDLEWARE = [
