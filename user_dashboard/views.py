@@ -9,7 +9,13 @@ from django.contrib import messages
 @login_required(login_url="user-login")
 def homePage(request):
     
-    return render(request, 'user_dashboard/index.html')
+    user = request.user.profile
+    deliveries = user.deliveries.all()
+    
+    context = {
+        'deliveries':deliveries
+    }     
+    return render(request, 'user_dashboard/index.html', context)
 
 
 @login_required(login_url="user-login")
