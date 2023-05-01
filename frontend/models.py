@@ -8,13 +8,16 @@ from datetime import datetime
 
 class Profile(models.Model):
     user = models.OneToOneField(
-        User, on_delete=models.CASCADE, null=True, blank=True)
+        User, on_delete=models.CASCADE, null=True, blank=True, related_name='profile')
     name = models.CharField(max_length=200, blank=True, null=True)
     email = models.EmailField(max_length=200, blank=True, null=True)
     username = models.CharField(max_length=200, blank=True, null=True)
+    website = models.CharField(max_length=200, blank=True, null=True)
     location = models.CharField(max_length=200, blank=True, null=True)
     profile_image = models.ImageField(null=True, blank=True,
                                       upload_to='profiles', default='profiles/user-default.png')
+    id = models.UUIDField(default=uuid.uuid4, unique=True,
+                          primary_key=True, editable=False)
     
     
     def __str__(self):
@@ -22,6 +25,8 @@ class Profile(models.Model):
     
     
 class BookDelivery(models.Model):
+    profile = models.ForeignKey(
+        Profile, on_delete=models.CASCADE, related_name='deliveries', null=True, blank=True)
     id = models.UUIDField(default=uuid.uuid4, unique=True,
                           primary_key=True, editable=False)
     item = models.CharField(max_length=200, blank=True, null=True)
@@ -35,8 +40,8 @@ class BookDelivery(models.Model):
     STATUS_CHOICES = [
         ('P', 'Pending'), 
         ('A', 'Assigned'), 
-        ('PU', 'PickedUp'), 
-        ('D', 'Delivered')
+        ('I', 'In-progress'), 
+        ('C', 'Completed')
     ]
     order_status = models.CharField(max_length=2, choices=STATUS_CHOICES, default='P')
     
@@ -71,6 +76,8 @@ class Contact(models.Model):
     email = models.EmailField(max_length=254)
     phone = models.CharField(max_length=200, blank=True, null=True)
     message = models.TextField()
+    id = models.UUIDField(default=uuid.uuid4, unique=True,
+                          primary_key=True, editable=False)
     
     def __str__(self):
         return self.name
