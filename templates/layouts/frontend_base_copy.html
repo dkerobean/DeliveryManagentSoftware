@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  {% include 'includes/frontend/head.html' %}
+
+  <body onload="initMap()">
+    
+        {% include 'includes/frontend/header_copy.html' %}
+    <!-- Header Area -->
+    
+    
+    {% block content %}
+      
+    {% endblock content %}
+      
+
+    
+
+    <!--Scroll to top-->
+    <a href="index.html#" class="scrollToTop">
+      <img src="assets/images/scroll.svg" alt="" />
+    </a>
+
+        {% include 'includes/frontend/scripts.html' %}
+
+  </body>
+</html>
