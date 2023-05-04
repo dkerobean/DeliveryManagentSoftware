@@ -170,7 +170,7 @@ def confirmDelivery(request):
         
         delivery_details = BookDelivery(profile=profile, item=item, item_type=item_type, pickup_location=pickup_location, 
                                         destination_location=destination_location, sender_contact=sender_contact, 
-                                        reciever_contact=reciever_contact)
+                                        reciever_contact=reciever_contact, price=price_1)
         delivery_details.save()
         messages.success(request, 'Delivery Booked, You Will Recieve A Call')
         return redirect('home')

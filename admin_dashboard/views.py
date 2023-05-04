@@ -4,12 +4,14 @@ from django.contrib import messages
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.decorators import user_passes_test
+from frontend.models import BookDelivery
 
 
 # ceck if user has admin status
 def is_admin(user):
     return user.is_authenticated and user.is_staff
 
+""" HOME """
 @login_required(login_url='admin-login')
 @user_passes_test(is_admin)
 def homePage(request):
@@ -49,3 +51,20 @@ def loginPage(request):
             messages.error(request, 'Username or password incorrect')
 
     return render(request, 'admin_dashboard/Auth/login.html')
+
+
+""" ORDERS """
+
+@login_required(login_url='admin-login')
+@user_passes_test(is_admin)
+def allOrders(request):
+    
+    orders = BookDelivery.objects.all()
+    
+    context = {
+        'orders':orders
+    }
+    
+    return render(request, 'admin_dashboard/Orders/viewAll.html', context)
+    
+    

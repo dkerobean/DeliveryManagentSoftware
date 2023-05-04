@@ -47,14 +47,18 @@ class BookDelivery(models.Model):
     sender_contact = models.CharField(max_length=200, blank=True, null=True)
     reciever_contact = models.CharField(max_length=200, blank=True, null=True)
     order_number = models.CharField(max_length=10, unique=True, editable=False, null=True)
+    created_at = models.DateTimeField(auto_now_add=True, null=True, blank=True)
+    price = models.DecimalField(
+        max_digits=10, decimal_places=2, null=True, blank=True)
+    
     
     STATUS_CHOICES = [
-        ('P', 'Pending'), 
-        ('A', 'Assigned'), 
-        ('I', 'In-progress'), 
-        ('C', 'Completed')
+        ('Pending', 'Pending'),
+        ('Assigned', 'Assigned'), 
+        ('In-progress', 'In-progress'),
+        ('Completed', 'Completed')
     ]
-    order_status = models.CharField(max_length=2, choices=STATUS_CHOICES, default='P')
+    order_status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='Pending')
     
     
     def save(self, *args, **kwargs):
