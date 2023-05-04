@@ -23,10 +23,21 @@ class Profile(models.Model):
     def __str__(self):
         return self.name
     
+class Rider(models.Model):
+    name = models.CharField(max_length=200, blank=True, null=True)
+    phone = models.CharField(max_length=200, blank=True, null=True)
+    id = models.UUIDField(default=uuid.uuid4, unique=True,
+                            primary_key=True, editable=False)
+
+    def __str__(self):
+        return self.name
+    
     
 class BookDelivery(models.Model):
     profile = models.ForeignKey(
         Profile, on_delete=models.CASCADE, related_name='deliveries', null=True, blank=True)
+    rider = models.ForeignKey(
+        Rider, on_delete=models.CASCADE, related_name='rider', null=True, blank=True)
     id = models.UUIDField(default=uuid.uuid4, unique=True,
                           primary_key=True, editable=False)
     item = models.CharField(max_length=200, blank=True, null=True)
@@ -81,6 +92,12 @@ class Contact(models.Model):
     
     def __str__(self):
         return self.name
+    
+    
+
+    
+    
+    
     
     
     
