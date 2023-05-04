@@ -7,5 +7,7 @@ urlpatterns = [
     
     path('login/', views.loginPage, name="admin-login"), 
     
-    path('orders/', views.allOrders, name="all-orders")
+    path('orders/', views.allOrders, name="all-orders"), 
+    path('order/<str:pk>/', views.orderDetails, name="order-details"), 
+    
 ]

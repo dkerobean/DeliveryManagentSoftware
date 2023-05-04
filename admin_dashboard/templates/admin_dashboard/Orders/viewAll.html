@@ -4,6 +4,32 @@
 
 {% block content %}
 
+
+    <!-- Country-selector modal-->
+        <div class="modal fade" id="country-selector">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content country-select-modal">
+                    <div class="modal-header">
+                        <h6 class="modal-title">Client Details</h6><button aria-label="Close" class="btn-close"
+                            data-bs-dismiss="modal" type="button"><span aria-hidden="true">×</span></button>
+                    </div>
+                    <div class="modal-body">
+                        <ul class="row p-3">
+                            <li class="col-lg-10 mb-2 mx-auto">
+                                <a href="javascript:void(0)" class="btn btn-country btn-lg btn-block active">
+                                    <span class="country-selector"><img alt="" src="{% static '../asset/images/flags-img/us_flag.jpg' %}"
+                                            class="me-3 language"></span>
+                                            Sender Name: 
+                                            
+                                </a>
+                            </li>                                                  
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Country-selector modal-->
+
     <div class="main-content app-content mt-0">
                 <div class="side-app">
 
@@ -82,7 +108,7 @@
                                                                             </tr>
                                                                         </thead>
                                                                         <tbody>
-                                                                            
+                                                                            <button class="btn btn-primary m-3 float-right mb-2">Add Delivery +</button>
                                                                         {% for order in orders %}
                                                                             <tr class="border-bottom">
                                                                                 <td class="text-center">
@@ -113,8 +139,12 @@
                                                                                     </div>
                                                                                 </td>
                                                                                 <td><span class="mt-sm-2 d-block">GHS{{order.price}}</span></td>
-                                                                                <td><span
-                                                                                        class="btn btn-primary fw-semibold mt-sm-2 d-block">{{order.profile.name}}</span>
+                                                                                <td>
+                                                                                    <span>
+                                                                                        <a class="text-center btn btn-primary" href="{% url 'order-details' order.id %}">
+                                                                                            {{order.profile.name}}</a>
+                                                                                    </span>
+                                                                                        
                                                                                 </td>
                                                                                 <td>
                                                                                     <div class="d-flex">
@@ -135,9 +165,9 @@
                                                                                 <td>
                                                                                     <div class="g-2">
                                                                                         <a class="btn text-primary btn-sm"
-                                                                                            data-bs-toggle="tooltip"
-                                                                                            data-bs-original-title="Edit"><span
-                                                                                                class="fe fe-edit fs-14"></span></a>
+                                                                                            href="{% url 'order-details' order.id %}"
+                                                                                            data-bs-original-title="View"><span
+                                                                                                class="fe fe-eye fs-14"></span></a>
                                                                                         <a class="btn text-danger btn-sm"
                                                                                             data-bs-toggle="tooltip"
                                                                                             data-bs-original-title="Delete"><span

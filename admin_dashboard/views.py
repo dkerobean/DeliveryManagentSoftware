@@ -66,5 +66,16 @@ def allOrders(request):
     }
     
     return render(request, 'admin_dashboard/Orders/viewAll.html', context)
+
+
+def orderDetails(request, pk):
+    
+    order = BookDelivery.objects.get(id=pk)
+    
+    context = {
+        'order':order
+    }
+    
+    return render(request, 'admin_dashboard/Orders/orderDetails.html', context)
     
     
