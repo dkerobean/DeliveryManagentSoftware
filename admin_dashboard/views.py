@@ -111,7 +111,9 @@ def orderDetails(request, pk):
     
     # get number of rides
     rider = order.rider
-    assigned_rides = rider.rider.count()
+    assigned_rides = None
+    if rider: 
+        assigned_rides = rider.rider.count()
     
     
     context = {
@@ -136,12 +138,13 @@ def editOrder(request, pk):
             url = reverse('order-details', kwargs={'pk': order.id})
             return redirect(url)
         
+        
     context = {
         'form':form, 
         'order':order,
     }
     
-    
+
     return render(request, 'admin_dashboard/Orders/editOrder.html', context)
 
 
