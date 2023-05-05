@@ -5,6 +5,8 @@ from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.decorators import user_passes_test
 from frontend.models import BookDelivery
+from .forms import EditDeliveryForm, BookDeliveryForm
+import uuid 
 
 
 # ceck if user has admin status
@@ -54,6 +56,26 @@ def loginPage(request):
 
 
 """ ORDERS """
+@login_required(login_url='admin-login')
+@user_passes_test(is_admin)
+def addOrder(request):
+    
+    form = BookDeliveryForm()
+    
+    if request.method == 'POST':
+        form = BookDeliveryForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Order created successfully')
+            return redirect('all-orders')
+        
+    context = {
+        'form':form
+    }
+    
+    
+    return render(request, 'admin_dashboard/Orders/addOrder.html', context)
+
 
 @login_required(login_url='admin-login')
 @user_passes_test(is_admin)
@@ -61,21 +83,37 @@ def allOrders(request):
     
     orders = BookDelivery.objects.all()
     
+    # add order 
+    form = BookDeliveryForm()
+    
+    if request.method == 'POST':
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Order created successfully')
+            return redirect('all-orders')
+    
+    
     context = {
-        'orders':orders
+        'orders':orders, 
+        'form':form
     }
     
     return render(request, 'admin_dashboard/Orders/viewAll.html', context)
 
 
+@login_required(login_url='admin-login')
+@user_passes_test(is_admin)
 def orderDetails(request, pk):
     
-    order = BookDelivery.objects.get(id=pk)
+    order = BookDelivery.objects.get(id=(pk))
+    
     
     context = {
         'order':order
     }
     
     return render(request, 'admin_dashboard/Orders/orderDetails.html', context)
+
+
     
     
