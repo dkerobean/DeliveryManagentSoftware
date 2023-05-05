@@ -5,7 +5,7 @@
 {% block content %}
 
 
-    <!-- Country-selector modal-->
+    <!-- Add Orderr Modal-->
         <div class="modal fade" id="country-selector">
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content country-select-modal">
@@ -38,7 +38,7 @@
                 </div>
             </div>
         </div>
-        <!-- Country-selector modal-->
+        <!-- Add Order Modal-->
 
     <div class="main-content app-content mt-0">
                 <div class="side-app">
@@ -177,6 +177,10 @@
                                                                                 </td>
                                                                                 <td>
                                                                                     <div class="g-2">
+                                                                                        <a class="btn text-primary btn-sm"
+                                                                                            href="{% url 'edit-order' order.id %}"
+                                                                                            data-bs-original-title="Edit"><span
+                                                                                                class="fe fe-edit fs-14"></span></a>
                                                                                         <a class="btn text-primary btn-sm"
                                                                                             href="{% url 'order-details' order.id %}"
                                                                                             data-bs-original-title="View"><span

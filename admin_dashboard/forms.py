@@ -7,20 +7,19 @@ class EditDeliveryForm(ModelForm):
     class Meta:
         model = BookDelivery
         fields = ['rider', 'pickup_location', 'destination_location',
-                  'price', 'reciever_contact', 'sender_contact']
+                'reciever_contact', 'sender_contact', 'order_status']
         labels = {
             'rider':'Assign Rider'
         }
         
     def __init__(self, *args, **kwargs):
-        super(EditDeliveryForm(), self).__init__(*args, **kwargs)
+        super(EditDeliveryForm, self).__init__(*args, **kwargs)
 
         for name, field in self.fields.items():
-            field.widget.attrs.update(
-                {'class': 'form-control '})
-
-            self.fields["name"].widget.attrs.update(
-                {'class': 'form-control'})
+            field.widget.attrs.update({'class': 'form-control'})
+            
+        self.fields['rider'].widget.attrs.update({'class': 'form-control form-select select2'})
+        self.fields['order_status'].widget.attrs.update({'class': 'form-control form-select select2'})
             
             
  
@@ -39,12 +38,7 @@ class BookDeliveryForm(ModelForm):
             field.widget.attrs.update(
                 {'class': 'form-control '})
 
-            self.fields["rider"].widget.attrs.update(
-                {'class': 'form-control form-select select2'})
-            
-            self.fields["profile"].widget.attrs.update(
-                {'class': 'form-control form-select select2'})
-            
-            self.fields["order_status"].widget.attrs.update(
-                {'class': 'form-control form-select select2'})
+            self.fields["rider"].widget.attrs.update({'class': 'form-control form-select select2'})
+            self.fields["profile"].widget.attrs.update({'class': 'form-control form-select select2'})   
+            self.fields["order_status"].widget.attrs.update({'class': 'form-control form-select select2'})
         

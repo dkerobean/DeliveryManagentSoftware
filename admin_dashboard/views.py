@@ -7,6 +7,8 @@ from django.contrib.auth.decorators import user_passes_test
 from frontend.models import BookDelivery
 from .forms import EditDeliveryForm, BookDeliveryForm
 import uuid 
+from django.urls import reverse
+
 
 
 # ceck if user has admin status
@@ -56,6 +58,7 @@ def loginPage(request):
 
 
 """ ORDERS """
+
 @login_required(login_url='admin-login')
 @user_passes_test(is_admin)
 def addOrder(request):
@@ -91,8 +94,7 @@ def allOrders(request):
             form.save()
             messages.success(request, 'Order created successfully')
             return redirect('all-orders')
-    
-    
+        
     context = {
         'orders':orders, 
         'form':form
@@ -107,12 +109,40 @@ def orderDetails(request, pk):
     
     order = BookDelivery.objects.get(id=(pk))
     
+    # get number of rides
+    rider = order.rider
+    assigned_rides = rider.rider.count()
+    
     
     context = {
-        'order':order
+        'order':order, 
+        'assigned_rides': assigned_rides
     }
     
     return render(request, 'admin_dashboard/Orders/orderDetails.html', context)
+
+@login_required(login_url='admin-login')
+@user_passes_test(is_admin)
+def editOrder(request, pk):
+    
+    order = BookDelivery.objects.get(id=pk)
+    form = EditDeliveryForm(instance=order)
+    
+    if request.method == "POST":
+        form = EditDeliveryForm(request.POST, instance=order)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Order edited successfully")
+            url = reverse('order-details', kwargs={'pk': order.id})
+            return redirect(url)
+        
+    context = {
+        'form':form, 
+        'order':order,
+    }
+    
+    
+    return render(request, 'admin_dashboard/Orders/editOrder.html', context)
 
 
     

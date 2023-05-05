@@ -77,7 +77,15 @@
                                                                 </tr>
                                                                 <tr>
                                                                     <td class="fw-bold">Assigned Rider</td>
-                                                                    <td>{{order.rider.name}}</td>
+                                                                    
+                                                                    {% if not order.rider.name %}
+                                                                      <td>
+                                                                        <a class="btn btn-primary" href="{% url 'edit-order' order.id %}">Assign Rider</a>
+                                                                      </td>  
+                                                                    {% else %}
+                                                                        <td>{{ order.rider.name }}</td>
+                                                                    {% endif %}
+
                                                                 </tr>
                                                                 
                                                             </table>
@@ -96,7 +104,7 @@
                                                                 </tr>
                                                                 <tr>
                                                                     <td class="fw-bold">Assigned Rides</td>
-                                                                    <td>1</td>
+                                                                    <td>{{assigned_rides}}</td>
                                                                 </tr>
                                                                 
                                                             </table>
@@ -130,6 +138,10 @@
                                                         </div>
                                                     </div>
                                                     </div>
+                                                        <a href="{% url 'all-orders' %}">
+                                                            <button class="btn btn-primary">Go Back</button>
+                                                        </a>
+
                                                 </div>
                                             </div>
                                         </div>
