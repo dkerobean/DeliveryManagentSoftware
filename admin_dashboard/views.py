@@ -4,7 +4,7 @@ from django.contrib import messages
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.decorators import user_passes_test
-from frontend.models import BookDelivery
+from frontend.models import BookDelivery, Contact
 from .forms import EditDeliveryForm, BookDeliveryForm
 import uuid 
 from django.urls import reverse
@@ -146,6 +146,38 @@ def editOrder(request, pk):
     
 
     return render(request, 'admin_dashboard/Orders/editOrder.html', context)
+
+
+""" CONTACT """
+
+@login_required(login_url='admin-login')
+@user_passes_test(is_admin)
+def allMessages(request):
+    
+    all_messages = Contact.objects.all()
+    
+    
+    context = {
+        'all_messages':all_messages
+    }
+    
+    
+    return render(request, 'admin_dashboard/contact/allMessages.html', context)
+
+
+@login_required(login_url='admin-login')
+@user_passes_test(is_admin)
+def viewMessages(request, pk):
+    
+    all_messages = Contact.objects.all()
+    message = Contact.objects.get(id=pk)
+    
+    context = {
+        'message':message,
+        'all_messages': all_messages
+    }
+    
+    return render(request, 'admin_dashboard/contact/viewMessage.html', context)
 
 
     

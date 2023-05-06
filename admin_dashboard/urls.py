@@ -12,4 +12,8 @@ urlpatterns = [
     path('order/edit/<str:pk>/', views.editOrder, name="edit-order"),
     path('order/<str:pk>/', views.orderDetails, name="order-details"), 
     
+    path('messages/', views.allMessages, name="all-messages"),
+    path('messages/<str:pk>/', views.viewMessages, name="view-message"),
+    
+    
 ]

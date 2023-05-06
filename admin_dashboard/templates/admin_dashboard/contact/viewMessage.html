@@ -1,0 +1,93 @@
+{% extends 'layouts/admin_dashboard.html' %}
+
+{% load static %}
+
+{% block content %}
+
+
+<!--app-content open-->
+            <div class="main-content app-content mt-0">
+                <div class="side-app">
+
+                    <!-- CONTAINER -->
+                    <div class="main-container container-fluid">
+
+                        <!-- PAGE-HEADER -->
+                        <div class="page-header">
+                            <h1 class="page-title">Email-Read</h1>
+                            <div>
+                                <ol class="breadcrumb">
+                                    <li class="breadcrumb-item"><a href="javascript:void(0)">Pages</a></li>
+                                    <li class="breadcrumb-item active" aria-current="page">Email-Read</li>
+                                </ol>
+                            </div>
+                        </div>
+                        <!-- PAGE-HEADER END -->
+
+                        <!-- Row -->
+                        <div class="row">
+                            <div class="col-xl-3">
+                                <div class="card">
+                                    <div class="list-group list-group-transparent mb-0 mail-inbox pb-3">
+                                        <div class="mt-4 mb-4 mx-4 text-center">
+                                            <a href="email-compose.html" class="btn btn-primary btn-lg d-grid">Compose</a>
+                                        </div>   
+                                        <a href="email-inbox.html" class="list-group-item d-flex align-items-center active mx-4">
+                                                <span class="icons"><i class="ri-mail-line"></i></span> Inbox <span class="ms-auto badge bg-secondary bradius">{{all_messages.count}}</span>
+                                        </a>                                    
+                                        <a href="javascript:void(0)" class="list-group-item d-flex align-items-center mx-4">
+                                            <span class="icons"><i class="ri-delete-bin-line"></i></span> Trash
+                                        </a>
+                                    </div>                                    
+                                </div>
+                            </div>
+                            <div class="col-xl-9">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h3 class="card-title">{{message.topic}}</h3>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="email-media">
+                                            <div class="mt-0 d-sm-flex">
+                                                <img class="me-2 rounded-circle avatar avatar-lg" src="{% static '/asset/images/users/6.jpg' %}" alt="avatar">
+                                                <div class="media-body pt-0">
+                                                    <div class="float-md-end d-flex fs-15">
+                                                        <small class="me-3 mt-3 text-muted">{{message.created_at}}</small>
+                                                        <a href="javascript:void(0)" class="me-3 email-icon text-secondary bg-secondary-transparent" data-bs-toggle="tooltip" aria-label="Reply" data-bs-original-title="Reply"><i class="fa fa-reply"></i></a>
+                                                        <div class="me-3">
+                                                            <a href="javascript:void(0)" class="text-danger email-icon bg-danger-transparent" data-bs-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fe fe-more-horizontal"></i></a>
+                                                            <div class="dropdown-menu dropdown-menu-end">
+                                                                <a class="dropdown-item" href="javascript:void(0)"><i class="fe fe-trash me-2"></i>Delete</a>           
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="media-title text-dark font-weight-semibold mt-1">{{message.name|capfirst}} <span class="text-muted font-weight-semibold">( {{message.email}} )</span></div>
+                                                    <small class="mb-0">Reach me on ( {{message.phone}} ) </small>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="eamil-body mt-5">
+                                            <h6>Hi Sir/Madam</h6><br><br>
+                                                <p>{{message.message|escape}}</p>
+                                            <p class="mb-0">Thanking you Sir/Madam</p>
+                                            <hr>                                                                     
+                                        </div>
+                                    </div>
+                                    <div class="card-footer">
+                                        <a class="btn btn-primary mt-1 mb-1" href="{% url 'all-messages' %}"><i class="fa fa-reply"></i> Go back</a>
+                                        <a class="btn btn-danger mt-1 mb-1" href="javascript:void(0)"><i class="fa fa-trash"></i> Delete</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--End  Row -->
+
+                    </div>
+                    <!-- CONTAINER CLOSED -->
+                </div>
+            </div>
+            <!--app-content closed-->
+
+{% endblock content %}
+            
