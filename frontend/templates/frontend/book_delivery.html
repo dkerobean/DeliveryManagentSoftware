@@ -39,14 +39,22 @@
                         <label for="topic">I want to</label>
                         <select id="topic" name="item" required class="nice-select-common select-topic">
                           <option data-display="What do you want to send"></option>
-                          <option value="Send a package" >Send a package</option>
+                          
+                          {% for option in deliveryAction %}
+                            <option value="{{option.action}}" >{{option.action}}</option>
+                          {% endfor %}
+                            
                         </select>
                       </div>
                       <div class="contact-form-name mt-5">
                         <label for="topic">What kind of item</label>
                         <select id="topic" required name="item-type" class="nice-select-common select-topic">
                           <option data-display="What kind of item is it"></option>
-                          <option value="Document and Books" >Document and Books</option>
+                          
+                          {% for option in deliveryType %}
+                            <option value="{{option.item_type}}" >{{option.item_type}}</option>
+                          {% endfor %}
+            
                         </select>
                       </div>
                       <div class="contact-form-name mt-5">

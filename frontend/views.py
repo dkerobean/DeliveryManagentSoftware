@@ -109,6 +109,9 @@ def bookDelivery(request):
     
     google_api_key = getattr(settings, 'GOOGLE_MAPS_API_KEY', None)
     
+    deliveryAction = DeliveryAction.objects.all()
+    deliveryType = DeliveryType.objects.all()
+    
     if request.method == "POST":
         
         item = request.POST["item"]
@@ -136,7 +139,9 @@ def bookDelivery(request):
     
     
     context = {
-        'google_api_key': google_api_key
+        'google_api_key': google_api_key, 
+        'deliveryAction':deliveryAction, 
+        'deliveryType':deliveryType
     }
     
     return render(request, 'frontend/book_delivery.html', context)
