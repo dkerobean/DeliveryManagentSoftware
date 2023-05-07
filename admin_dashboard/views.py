@@ -4,8 +4,8 @@ from django.contrib import messages
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.decorators import user_passes_test
-from frontend.models import BookDelivery, Contact
-from .forms import EditDeliveryForm, BookDeliveryForm
+from frontend.models import BookDelivery, Contact, DeliveryAction, DeliveryType
+from .forms import EditDeliveryForm, BookDeliveryForm, AddDeliveryActionForm, AddDeliveryTypeForm
 import uuid 
 from django.urls import reverse
 
@@ -178,6 +178,52 @@ def viewMessages(request, pk):
     }
     
     return render(request, 'admin_dashboard/contact/viewMessage.html', context)
+
+""" DELIVERY """
+
+@login_required(login_url='admin-login')
+@user_passes_test(is_admin)
+def viewDeliveryType(request):
+    
+    deliveryType = DeliveryType.objects.all()
+    
+    form = AddDeliveryTypeForm()
+    
+    if request.method == "POST":
+        form = AddDeliveryTypeForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Added Successfully")
+            return redirect('add-delivery-type')
+        
+    context = {
+        'form':form, 
+        'deliveryType':deliveryType
+    }
+    
+    return render(request, 'admin_dashboard/delivery_details/deliveryType.html', context)
+
+
+@login_required(login_url='admin-login')
+@user_passes_test(is_admin)
+def viewDeliveryAction(request):
+    
+    deliveryAction = DeliveryAction.objects.all()
+    form = AddDeliveryActionForm()
+
+    if request.method == "POST":
+        form = AddDeliveryActionForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Added Successfully")
+            return redirect('add-delivery-action')
+
+    context = {
+        'form': form, 
+        'deliveryAction':deliveryAction
+    }
+
+    return render(request, 'admin_dashboard/delivery_details/deliveryAction.html', context)
 
 
     

@@ -1,0 +1,146 @@
+{% extends 'layouts/admin_dashboard.html' %}
+
+{% load static %}
+
+{% block content %}
+
+
+    <!-- Add deliveryType Modal-->
+        <div class="modal fade" id="country-selector">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content country-select-modal">
+                    <div class="modal-header">
+                        <h6 class="modal-title">Add Delivery Type</h6><button aria-label="Close" class="btn-close"
+                            data-bs-dismiss="modal" type="button"><span aria-hidden="true">×</span></button>
+                    </div>
+                    <div class="modal-body col-md-12">
+                        <div class="card-body">
+                            <form action="{% url 'add-delivery-type' %}" method="POST">
+                                {% csrf_token %}                                           
+                                    <div class="row">
+                                        {% for field in form %}
+                                            <div class="col-sm-10 col-md-10">
+                                                <div class="form-group">
+                                                    <label class="form-label">{{field.label}} <span class="text-red">*</span></label>
+                                                    {{field}}                                                                                                                        
+                                                </div>
+                                                {% for error in field.errors %}
+                                                    <p style="color:red;">{{error}}</p>
+                                                {% endfor %}
+                                            </div>
+                                        {% endfor %}
+
+                                    <button type="submit" class="btn btn-primary mt-4 mb-0">Add</button>                                                                                
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Add deliveryType Modal -->
+
+    <div class="main-content app-content mt-0">
+                <div class="side-app">
+
+                    <!-- CONTAINER -->
+                    <div class="main-container container-fluid">
+
+                        <!-- PAGE-HEADER -->
+                        <div class="page-header">
+                            <h1 class="page-title">Dashboard 01</h1>
+                            <div>
+                                <ol class="breadcrumb">
+                                    <li class="breadcrumb-item"><a href="javascript:void(0)">Orders</a></li>
+                                    <li class="breadcrumb-item active" aria-current="page">All Orders</li>
+                                </ol>
+                            </div>
+                        </div>
+                        <!-- PAGE-HEADER END -->
+
+                        
+
+                        <!-- ROW-4 -->
+                        <div class="row">
+                            <div class="col-12 col-sm-12">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h3 class="card-title mb-0">All Orders</h3>
+                                    </div>
+                                    <div class="card-body pt-4">
+                                        <div class="grid-margin">
+                                            <div class="">
+                                                <div class="panel panel-primary">
+                                                    <div class="tab-menu-heading border-0 p-0">
+                                                        <div class="tabs-menu1">
+                                                            <!-- Tabs -->
+                                                            <ul class="nav panel-tabs product-sale">
+                                                                <li><a href="#tab5" class="active"
+                                                                        data-bs-toggle="tab">All products</a></li>                                                            
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                    <div class="panel-body tabs-menu-body border-0 pt-0">
+                                                        <div class="tab-content">
+                                                            <div class="tab-pane active" id="tab3">
+                                                                <div class="table-responsive">
+                                                                    <table id="data-table"
+                                                                        class="table table-bordered text-nowrap mb-0">
+                                                                        <thead class="border-top">
+                                                                            <tr>
+                                                                                <th class="bg-transparent border-bottom-0"
+                                                                                    style="width: 5%;">Delivery Type</th>                                                                               
+                                                                                <th class="bg-transparent border-bottom-0"
+                                                                                    style="width: 5%;">Action</th>
+                                                                            </tr>
+                                                                        </thead>
+                                                                        <tbody>                                                             
+                                                                            <button class="btn btn-primary text-center m-3">
+                                                                                <a class="" data-bs-target="#country-selector"
+                                                                                data-bs-toggle="modal"> Add Delivery Type </a>
+                                                                            </button>
+                                                                        {% for delivery in deliveryType %}
+                                                                            <tr class="border-bottom">
+                                                                                <td class="">
+                                                                                    <div class="mt-0 mt-sm-2 d-block">
+                                                                                        <h6
+                                                                                            class="mb-0 fs-14 fw-semibold">
+                                                                                            {{delivery.item_type}}</h6>
+                                                                                    </div>
+                                                                                </td>                                                                            
+                                                                                <td>
+                                                                                    <div class="g-2">
+                                                                                        <a class="btn text-primary btn-sm"
+                                                                                            href=""
+                                                                                            data-bs-original-title="Edit"><span
+                                                                                                class="fe fe-edit fs-14"></span></a>                                                                                       
+                                                                                        <a class="btn text-danger btn-sm"
+                                                                                            data-bs-toggle="tooltip"
+                                                                                            data-bs-original-title="Delete"><span
+                                                                                                class="fe fe-trash-2 fs-14"></span></a>
+                                                                                    </div>
+                                                                                </td>
+                                                                            </tr>
+                                                                        {% endfor %}
+                                                                                
+                                                                        </tbody>
+                                                                    </table>
+                                                                </div>
+                                                            </div>                                                           
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- ROW-4 END -->
+                    </div>
+                    <!-- CONTAINER END -->
+                </div>
+            </div>
+    
+{% endblock content %}
+    

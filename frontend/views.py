@@ -8,7 +8,7 @@ from .forms import CustomUserCreationForm
 from django.conf import settings
 import googlemaps
 import math
-from .models import BookDelivery, Contact, Profile
+from .models import BookDelivery, Contact, Profile, DeliveryAction, DeliveryType
 from django.contrib.auth.models import AnonymousUser
 
 

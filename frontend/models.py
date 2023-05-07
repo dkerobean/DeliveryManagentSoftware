@@ -99,6 +99,24 @@ class Contact(models.Model):
     def __str__(self):
         return self.name
     
+class DeliveryType(models.Model):
+    item_type = models.CharField(max_length=250, blank=True, null=True)
+    id = models.UUIDField(default=uuid.uuid4, unique=True,
+                          primary_key=True, editable=False)
+    
+    def __str__(self):
+        return self.action
+    
+class DeliveryAction(models.Model):
+    action = models.CharField(max_length=250, blank=True, null=True)
+    id = models.UUIDField(default=uuid.uuid4, unique=True,
+                          primary_key=True, editable=False)
+    
+    def __str__(self):
+        return self.action
+    
+    
+    
     
 
     
