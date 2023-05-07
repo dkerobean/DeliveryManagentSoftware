@@ -206,6 +206,28 @@ def viewDeliveryType(request):
 
 @login_required(login_url='admin-login')
 @user_passes_test(is_admin)
+def editDeliveryType(request, pk):
+    
+    delivery_type = DeliveryType.objects.get(id=pk)
+    
+    form = AddDeliveryTypeForm(instance=delivery_type)
+    
+    if request.method == "POST":
+        form = AddDeliveryTypeForm(request.POST, instance=delivery_type)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Edit Successfull')
+            return redirect('add-delivery-type')
+        
+    context = {
+        'form':form
+    }
+    
+    return render(request, 'admin_dashboard/delivery_details/editDeliveryType.html', context)
+
+
+@login_required(login_url='admin-login')
+@user_passes_test(is_admin)
 def viewDeliveryAction(request):
     
     deliveryAction = DeliveryAction.objects.all()
@@ -224,6 +246,28 @@ def viewDeliveryAction(request):
     }
 
     return render(request, 'admin_dashboard/delivery_details/deliveryAction.html', context)
+
+
+@login_required(login_url='admin-login')
+@user_passes_test(is_admin)
+def editDeliveryAction(request, pk):
+
+    delivery_action = DeliveryAction.objects.get(id=pk)
+
+    form = AddDeliveryActionForm(instance=delivery_action)
+
+    if request.method == "POST":
+        form = AddDeliveryActionForm(request.POST, instance=delivery_action)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Edit Successfull')
+            return redirect('add-delivery-action')
+
+    context = {
+        'form': form
+    }
+
+    return render(request, 'admin_dashboard/delivery_details/editDeliveryAction.html', context)
 
 
     

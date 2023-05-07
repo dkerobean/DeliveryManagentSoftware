@@ -109,15 +109,17 @@
                                                                                     </div>
                                                                                 </td>                                                                            
                                                                                 <td>
+                                                                                    
                                                                                     <div class="g-2">
                                                                                         <a class="btn text-primary btn-sm"
-                                                                                            href=""
-                                                                                            data-bs-original-title="Edit"><span
+                                                                                            href="{% url 'edit-delivery-type' delivery.id %}"
+                                                                                            data-bs-original-title="Edits"><span
                                                                                                 class="fe fe-edit fs-14"></span></a>                                                                                       
-                                                                                        <a class="btn text-danger btn-sm"
+                                                                                        <a href="" class="btn text-danger btn-sm"
                                                                                             data-bs-toggle="tooltip"
                                                                                             data-bs-original-title="Delete"><span
                                                                                                 class="fe fe-trash-2 fs-14"></span></a>
+                                                                                                
                                                                                     </div>
                                                                                 </td>
                                                                             </tr>
