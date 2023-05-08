@@ -270,6 +270,8 @@ def editDeliveryAction(request, pk):
     return render(request, 'admin_dashboard/delivery_details/editDeliveryAction.html', context)
 
 
+@login_required(login_url='admin-login')
+@user_passes_test(is_admin)
 def deleteDeliveryAction(request, pk):
     
     delivery_action = DeliveryAction.objects.get(id=pk)
@@ -286,6 +288,26 @@ def deleteDeliveryAction(request, pk):
     }
     
     
+    return render(request, 'admin_dashboard/delete.html', context)
+
+
+@login_required(login_url='admin-login')
+@user_passes_test(is_admin)
+def deleteDeliveryType(request, pk):
+
+    delivery_type = DeliveryType.objects.get(id=pk)
+    item = delivery_type.item_type
+
+    if request.method == "POST":
+        delivery_type.delete()
+        messages.success(request, "delete successfull")
+        return redirect('add-delivery-type')
+
+    context = {
+        'delivery_type': delivery_type,
+        'item': item
+    }
+
     return render(request, 'admin_dashboard/delete.html', context)
 
 
