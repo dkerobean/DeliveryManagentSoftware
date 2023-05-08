@@ -179,7 +179,7 @@ def viewMessages(request, pk):
     
     return render(request, 'admin_dashboard/contact/viewMessage.html', context)
 
-""" DELIVERY """
+""" DELIVERY DETAILS """
 
 @login_required(login_url='admin-login')
 @user_passes_test(is_admin)
@@ -268,6 +268,25 @@ def editDeliveryAction(request, pk):
     }
 
     return render(request, 'admin_dashboard/delivery_details/editDeliveryAction.html', context)
+
+
+def deleteDeliveryAction(request, pk):
+    
+    delivery_action = DeliveryAction.objects.get(id=pk)
+    item = delivery_action.action
+    
+    if request.method == "POST":
+        delivery_action.delete()
+        messages.success(request, "delete successfull")
+        return redirect('add-delivery-action')
+    
+    context = { 
+        'delivery_action': delivery_action, 
+        'item':item
+    }
+    
+    
+    return render(request, 'admin_dashboard/delete.html', context)
 
 
     
