@@ -11,6 +11,7 @@ urlpatterns = [
     path('order/add/', views.addOrder, name="add-order"),
     path('order/edit/<str:pk>/', views.editOrder, name="edit-order"),
     path('order/<str:pk>/', views.orderDetails, name="order-details"), 
+    path('order/delete/<str:pk>/', views.deleteOrder, name="delete-order"),
     
     path('messages/', views.allMessages, name="all-messages"),
     path('messages/<str:pk>/', views.viewMessages, name="view-message"),

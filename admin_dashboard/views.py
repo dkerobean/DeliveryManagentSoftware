@@ -147,6 +147,22 @@ def editOrder(request, pk):
 
     return render(request, 'admin_dashboard/Orders/editOrder.html', context)
 
+def deleteOrder(request, pk):
+    
+    order = BookDelivery.objects.get(order_number=pk)
+    item = order.order_number
+    
+    if request.method == "POST":
+        order.delete()
+        messages.success(request, 'Deleted successfully')
+        return redirect('all-orders')
+    
+    context = {
+        'item':item
+    }
+    
+    return render(request, 'admin_dashboard/delete.html', context)
+
 
 """ CONTACT """
 
