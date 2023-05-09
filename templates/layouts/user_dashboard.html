@@ -1,5 +1,7 @@
 <!doctype html>
 <html lang="en" dir="ltr">
+    
+{% load static %}
 
 {% include 'includes/user_dashboard/head.html' %}
 
@@ -8,7 +10,7 @@
 
     <!-- GLOBAL-LOADER -->
     <div id="global-loader">
-        <img src="../asset/images/loader.svg" class="loader-img" alt="Loader">
+        <img src="{% static '/asset/images/loader.svg' %}" class="loader-img" alt="Loader">
     </div>
     <!-- /GLOBAL-LOADER -->
 
