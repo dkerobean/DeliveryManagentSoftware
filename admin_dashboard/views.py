@@ -20,7 +20,15 @@ def is_admin(user):
 @user_passes_test(is_admin)
 def homePage(request):
     
-    return render(request, 'admin_dashboard/index.html')
+    all_messages = Contact.objects.all()
+    boolq = True
+    
+    context = {
+        'all_messages':all_messages, 
+        'bool':boolq
+    }
+    
+    return render(request, 'admin_dashboard/index.html', context)
 
 
 """ AUTENTHICATION """
