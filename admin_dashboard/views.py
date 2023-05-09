@@ -84,7 +84,10 @@ def addOrder(request):
 @user_passes_test(is_admin)
 def allOrders(request):
     
-    orders = BookDelivery.objects.all()
+    orders = BookDelivery.objects.filter(is_deleted=False)
+    cancelled = BookDelivery.objects.filter(is_deleted=True)
+    pending = BookDelivery.objects.filter(order_status='Pending')
+    completed = BookDelivery.objects.filter(order_status='Completed')
     
     # add order 
     form = BookDeliveryForm()
@@ -97,7 +100,10 @@ def allOrders(request):
         
     context = {
         'orders':orders, 
-        'form':form
+        'form':form, 
+        'cancelled':cancelled, 
+        'pending':pending, 
+        'completed':completed
     }
     
     return render(request, 'admin_dashboard/Orders/viewAll.html', context)
@@ -135,8 +141,8 @@ def editOrder(request, pk):
         if form.is_valid():
             form.save()
             messages.success(request, "Order edited successfully")
-            url = reverse('order-details', kwargs={'pk': order.id})
-            return redirect(url)
+            #url = reverse('order-details', kwargs={'pk': order.id})
+            return redirect('all-orders')
         
         
     context = {
@@ -147,6 +153,9 @@ def editOrder(request, pk):
 
     return render(request, 'admin_dashboard/Orders/editOrder.html', context)
 
+
+@login_required(login_url='admin-login')
+@user_passes_test(is_admin)
 def deleteOrder(request, pk):
     
     order = BookDelivery.objects.get(order_number=pk)

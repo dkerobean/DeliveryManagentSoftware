@@ -51,6 +51,13 @@ class BookDelivery(models.Model):
     price = models.DecimalField(
         max_digits=10, decimal_places=2, null=True, blank=True)
     
+    # Soft delete 
+    is_deleted = models.BooleanField(default=False)
+    
+    def delete(self, using=None, keep_parents=False):
+        self.is_deleted = True
+        self.save()
+    
     
     STATUS_CHOICES = [
         ('Pending', 'Pending'),
