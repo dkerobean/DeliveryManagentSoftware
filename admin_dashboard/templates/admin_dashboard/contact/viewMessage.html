@@ -76,7 +76,7 @@
                                     </div>
                                     <div class="card-footer">
                                         <a class="btn btn-primary mt-1 mb-1" href="{% url 'all-messages' %}"><i class="fa fa-reply"></i> Go back</a>
-                                        <a class="btn btn-danger mt-1 mb-1" href="javascript:void(0)"><i class="fa fa-trash"></i> Delete</a>
+                                        <a class="btn btn-danger mt-1 mb-1" href="{% url 'delete-message' message.id %}"><i class="fa fa-trash"></i> Delete</a>
                                     </div>
                                 </div>
                             </div>

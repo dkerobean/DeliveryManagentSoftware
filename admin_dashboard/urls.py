@@ -15,6 +15,7 @@ urlpatterns = [
     
     path('messages/', views.allMessages, name="all-messages"),
     path('messages/<str:pk>/', views.viewMessages, name="view-message"),
+    path('message/delete/<str:pk>/', views.deleteMessage, name="delete-message"),
     
     path('deliverytype/add/', views.viewDeliveryType, name="add-delivery-type"),
     path('deliverytype/edit/<str:pk>/', views.editDeliveryType, name="edit-delivery-type"),

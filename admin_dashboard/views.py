@@ -195,6 +195,27 @@ def viewMessages(request, pk):
     
     return render(request, 'admin_dashboard/contact/viewMessage.html', context)
 
+
+@login_required(login_url='admin-login')
+@user_passes_test(is_admin)
+def deleteMessage(request, pk):
+    
+    message = Contact.objects.get(id=pk)
+    item = message.name
+    
+    if request.method == "POST":
+        message.delete()
+        messages.success(request, 'Message Deleted!')
+        return redirect('all-messages')
+    
+    context = {
+        'item':item
+    }
+    
+    
+    return render(request, 'admin_dashboard/delete.html', context)
+
+
 """ DELIVERY DETAILS """
 
 @login_required(login_url='admin-login')
