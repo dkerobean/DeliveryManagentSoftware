@@ -1,0 +1,159 @@
+{% extends 'layouts/admin_dashboard.html' %}
+
+{% load static %}
+
+{% block content %}
+
+  <div class="main-content app-content mt-0">
+                <div class="side-app">
+
+                    <!-- CONTAINER -->
+                    <div class="main-container container-fluid">
+
+                        <!-- PAGE-HEADER -->
+                        <div class="page-header">
+                            <h1 class="page-title">Order Details</h1>
+                            <div>
+                                <ol class="breadcrumb">
+                                    <li class="breadcrumb-item"><a href="javascript:void(0)">E-Commerce</a></li>
+                                    <li class="breadcrumb-item active" aria-current="page">Product Details</li>
+                                </ol>
+                            </div>
+                        </div>
+                        <!-- PAGE-HEADER END -->
+
+                        <!-- ROW-1 OPEN -->
+                        <div class="row">                           
+                            <div class="col-xl-12 col-md-12">
+                                <div class="card productdesc">
+                                    <div class="card-body">
+                                        <div class="panel panel-primary">
+                                            <div class=" tab-menu-heading">
+                                                <div class="tabs-menu1">
+                                                    <!-- Tabs -->
+                                                    <ul class="nav panel-tabs">
+                                                        <li><a href="#tab5" class="active" data-bs-toggle="tab">Pickup Details</a></li>
+                                                        <li><a href="#tab6" data-bs-toggle="tab">Rider Details</a></li>
+                                                        <li><a href="#tab7" data-bs-toggle="tab">Edit Details</a></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div class="panel-body tabs-menu-body">
+                                                <div class="tab-content">
+                                                    <div class="tab-pane active" id="tab5">                            
+                                                        <h4>
+                                                            <span class="badge bg-warning-transparent rounded-pill text-warning p-2 px-3">
+                                                            {{order.order_status}}</span>
+                                                        </h4 class="class="fw-bold">
+                                                        <div class="table-responsive">
+                                                            <table class="table table-bordered">
+                                                                <tr>
+                                                                    <td class="fw-bold">Sender Name</td>
+                                                                    <td>{{order.profile.name}}</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="fw-bold">Reciever Phone</td>
+                                                                    <td>{{order.reciever_contact}}</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="fw-bold">Sender Phone</td>
+                                                                    <td>{{order.sender_contact}}</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="fw-bold">Pickup Address</td>
+                                                                    <td>{{order.pickup_location}}</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="fw-bold">Destination Address</td>
+                                                                    <td>{{order.destination_location}}</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="fw-bold">Price</td>
+                                                                    <td>GHS {{order.price}}</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="fw-bold">Pickup Date</td>
+                                                                    <td> </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="fw-bold">Assigned Rider</td>
+                                                                    
+                                                                    {% if not order.rider.name %}
+                                                                      <td>
+                                                                        <a class="btn btn-primary" href="{% url 'edit-order' order.id %}">Assign Rider</a>
+                                                                      </td>  
+                                                                    {% else %}
+                                                                        <td>{{ order.rider.name }}</td>
+                                                                    {% endif %}
+
+                                                                </tr>
+                                                                
+                                                            </table>
+                                                        </div>
+                                                    </div>
+                                                    <div class="tab-pane pt-5" id="tab6">
+                                                        <div class="table-responsive">
+                                                            <table class="table table-bordered">
+                                                                <tr>
+                                                                    <td class="fw-bold">Rider Name</td>
+                                                                    <td> {{order.rider.name}}</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="fw-bold">Rider Contact</td>
+                                                                    <td>{{order.rider.phone}}</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="fw-bold">Assigned Rides</td>
+                                                                    <td>{{assigned_rides}}</td>
+                                                                </tr>
+                                                                
+                                                            </table>
+                                                        </div>
+                                                    </div>
+                                                    <div class="tab-pane" id="tab7">
+                                                        <div class="col-md-12 col-xl-6">
+                                                        <div class="card">
+                                                            <div class="card-header">
+                                                                <h4 class="card-title">Vertical Form</h4>
+                                                            </div>
+                                                            <div class="card-body">
+                                                                <form>
+                                                                    <div class="">
+                                                                        <div class="form-group">
+                                                                            <label for="exampleInputEmail1" class="form-label">Email address</label>
+                                                                            <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email" autocomplete="username">
+                                                                        </div>
+                                                                        <div class="form-group">
+                                                                            <label for="exampleInputPassword1" class="form-label">Password</label>
+                                                                            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" autocomplete="new-password">
+                                                                        </div>
+                                                                        <label class="custom-control custom-checkbox">
+                                                                                <input type="checkbox" class="custom-control-input" name="example-checkbox2" value="option2">
+                                                                                <span class="custom-control-label">Check me Out</span>
+                                                                            </label>
+                                                                    </div>
+                                                                    <button class="btn btn-primary mt-4 mb-0">Submit</button>
+                                                                </form>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    </div>
+                                                        <a href="{% url 'all-orders' %}">
+                                                            <button class="btn btn-primary">Go Back</button>
+                                                        </a>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>                           
+                        </div>
+                        <!-- ROW-1 CLOSED -->
+                    </div>
+                    <!-- CONTAINER CLOSED -->
+                </div>
+            </div>  
+
+{% endblock content %}
+    

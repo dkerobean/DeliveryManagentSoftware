@@ -8,7 +8,7 @@ from .forms import CustomUserCreationForm
 from django.conf import settings
 import googlemaps
 import math
-from .models import BookDelivery, Contact, Profile
+from .models import BookDelivery, Contact, Profile, DeliveryAction, DeliveryType
 from django.contrib.auth.models import AnonymousUser
 
 
@@ -109,6 +109,9 @@ def bookDelivery(request):
     
     google_api_key = getattr(settings, 'GOOGLE_MAPS_API_KEY', None)
     
+    deliveryAction = DeliveryAction.objects.all()
+    deliveryType = DeliveryType.objects.all()
+    
     if request.method == "POST":
         
         item = request.POST["item"]
@@ -136,7 +139,9 @@ def bookDelivery(request):
     
     
     context = {
-        'google_api_key': google_api_key
+        'google_api_key': google_api_key, 
+        'deliveryAction':deliveryAction, 
+        'deliveryType':deliveryType
     }
     
     return render(request, 'frontend/book_delivery.html', context)
@@ -170,7 +175,7 @@ def confirmDelivery(request):
         
         delivery_details = BookDelivery(profile=profile, item=item, item_type=item_type, pickup_location=pickup_location, 
                                         destination_location=destination_location, sender_contact=sender_contact, 
-                                        reciever_contact=reciever_contact)
+                                        reciever_contact=reciever_contact, price=price_1)
         delivery_details.save()
         messages.success(request, 'Delivery Booked, You Will Recieve A Call')
         return redirect('home')
