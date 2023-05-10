@@ -37,8 +37,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    
-    'frontend.apps.FrontendConfig'
+
+    'frontend.apps.FrontendConfig', 
+    'user_dashboard.apps.UserDashboardConfig',
+    'admin_dashboard.apps.AdminDashboardConfig',
 ]
 
 MIDDLEWARE = [
@@ -58,7 +60,7 @@ TEMPLATES = [
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
             BASE_DIR / 'templates'
-            ],
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -72,6 +74,8 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'deliveryapp.wsgi.application'
+
+GOOGLE_MAPS_API_KEY = 'AIzaSyBM2cxD_neyYsBVSms1EV_gZvy1obbkIXw'
 
 
 # Database

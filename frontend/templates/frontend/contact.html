@@ -1,0 +1,241 @@
+{% extends 'layouts/frontend_base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+    <main>
+      <!-- Banner Area -->
+      <section class="banner-area contact-banner-area">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <div class="section-title-center">
+                <h2 class="font-bold mt-n3">Feel free to contact us or just say hi!</h2>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- <img class="banner-shape-2" src="{% static 'assets/images/shape/bg-shape-2.png' %}" alt="Pricing Banner Shape"> -->
+        <img class="shape13" src="{% static 'assets/images/shape/shape13.svg' %}" alt="Shape" />
+        <img class="shape14" src="{% static 'assets/images/shape/shape14.svg' %}" alt="Shape" />
+        <img class="shape15" src="{% static 'assets/images/shape/shape15.svg' %}" alt="Shape" />
+        <img
+          class="shape16 object-element"
+          data-paroller-factor="0.05"
+          data-paroller-type="foreground"
+          data-paroller-direction="horizontal"
+          data-paroller-transition="transform .2s linear"
+          src="{% static 'assets/images/shape/pricing-shape7.svg' %}"
+          alt="Shape"
+        />
+        <img class="pricing-shape-11" src="{% static 'assets/images/features/features-object-6.svg' %}" alt="Pricing Banner Shape" />
+      </section>
+      <!-- Banner Area -->
+
+      <!-- Contact Area -->
+      <section class="contact-area section-padding-xl">
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-6 col-lg-4">
+              <div class="contact-info">
+                <img src="{% static 'assets/images/icon/icon-9.svg' %}" alt="" />
+                <h4>102 street 1234 Don</h4>
+              </div>
+            </div>
+            <div class="col-sm-6 col-lg-4">
+              <div class="contact-info">
+                <img src="{% static 'assets/images/icon/icon-10.svg' %}" alt="" />
+                <h4><a href="tel:+0123-4567 89">+0123-4567 89</a></h4>
+              </div>
+            </div>
+            <div class="col-sm-6 col-lg-4 mx-auto">
+              <div class="contact-info">
+                <img src="{% static 'assets/images/icon/icon-11.svg' %}" alt="" />
+                <h4>
+                  <a href="mailto:landpagy@email.com">landpagy@email.com</a>
+                </h4>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12">
+              <div class="contact-form">
+                <form method="POST" action="{% url 'contact' %}">
+                    {% csrf_token %}
+                  <div class="row">
+                    <div class="col-lg-6">
+                      <div class="contact-form-select">
+                        <label for="topic">Topic</label>
+                        <select id="topic" name="topic" required class="nice-select-common select-topic">
+                          <option data-display="Please select a topic">Please select a topic</option>
+                          <option value="Sales">Sales</option>
+                          <option value="Support">Support</option>
+                          <option value="Partnership">Partnership</option>
+                          <option value="General">General</option>
+                        </select>
+                      </div>
+                      <div class="contact-form-name">
+                        <label for="name" class="mt-4">Your Name</label>
+                        <input type="text" id="name"required name="name" />
+                      </div>
+                      <div class="contact-form-email">
+                        <label for="email">Email</label>
+                        <input type="text" id="email" placeholder="Enter your email" name="email" />
+                      </div>
+                      <div class="contact-form-name">
+                        <label for="phone">Phone</label>
+                        <input type="text" id="phone" name="phone" required/>
+                      </div>
+                    </div>
+                    <div class="col-lg-6">
+                      <div class="contact-form-message">
+                        <label for="textarea">Message</label>
+                        <textarea id="textarea" name="message" required placeholder="Type your message...."></textarea>
+                      </div>
+                    </div>
+                    <div class="col-12">
+                      <div class="contact-form-button">
+                        <button type="submit" class="btn btn-red">Send</button>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Contact Area -->
+
+      <!-- Map Area -->
+      <section class="map-area section-padding-xl bg-white-800">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <div class="map">
+                <div class="map-image">
+                  <img src="{% static 'assets/images/map.svg' %}" alt="" />
+                </div>
+                <div class="map-marking-item">
+                  <div class="map-marking-point">
+                    <div id="map" data-placement="top" class="tippy-box map-address" style="display: none">
+                      <div class="tippy-content d-flex align-items-center">
+                        <div class="flag">
+                          <img src="{% static 'assets/images/flag.png' %}" alt="" />
+                        </div>
+                        <div class="address-info">
+                          <h6>United States</h6>
+                          <span>102 street 1234 Don</span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="marking-point"></div>
+                  </div>
+                </div>
+                <div class="map-marking-item">
+                  <div class="map-marking-point">
+                    <div id="map" data-placement="top" class="tippy-box map-address" style="display: none">
+                      <div class="tippy-content d-flex align-items-center">
+                        <div class="flag">
+                          <img src="{% static 'assets/images/flag.png' %}" alt="" />
+                        </div>
+                        <div class="address-info">
+                          <h6>United States</h6>
+                          <span>102 street 1234 Don</span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="marking-point"></div>
+                  </div>
+                </div>
+                <div class="map-marking-item">
+                  <div class="map-marking-point">
+                    <div id="map" data-placement="top" class="tippy-box map-address" style="display: none">
+                      <div class="tippy-content d-flex align-items-center">
+                        <div class="flag">
+                          <img src="{% static 'assets/images/flag.png' %}" alt="" />
+                        </div>
+                        <div class="address-info">
+                          <h6>United States</h6>
+                          <span>102 street 1234 Don</span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="marking-point"></div>
+                  </div>
+                </div>
+                <div class="map-marking-item">
+                  <div class="map-marking-point">
+                    <div id="map" data-placement="top" class="tippy-box map-address" style="display: none">
+                      <div class="tippy-content d-flex align-items-center">
+                        <div class="flag">
+                          <img src="{% static 'assets/images/flag.png' %}" alt="" />
+                        </div>
+                        <div class="address-info">
+                          <h6>United States</h6>
+                          <span>102 street 1234 Don</span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="marking-point"></div>
+                  </div>
+                </div>
+                <div class="map-marking-item">
+                  <div class="map-marking-point">
+                    <div id="map" data-placement="top" class="tippy-box map-address" style="display: none">
+                      <div class="tippy-content d-flex align-items-center">
+                        <div class="flag">
+                          <img src="{% static 'assets/images/flag.png' %}" alt="" />
+                        </div>
+                        <div class="address-info">
+                          <h6>United States</h6>
+                          <span>102 street 1234 Don</span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="marking-point"></div>
+                  </div>
+                </div>
+                <div class="map-marking-item">
+                  <div class="map-marking-point">
+                    <div id="map" data-placement="top" class="tippy-box map-address" style="display: none">
+                      <div class="tippy-content d-flex align-items-center">
+                        <div class="flag">
+                          <img src="{% static 'assets/images/flag.png' %}" alt="" />
+                        </div>
+                        <div class="address-info">
+                          <h6>United States</h6>
+                          <span>102 street 1234 Don</span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="marking-point"></div>
+                  </div>
+                </div>
+                <div class="map-marking-item">
+                  <div class="map-marking-point">
+                    <div id="map" data-placement="top" class="tippy-box map-address" style="display: none">
+                      <div class="tippy-content d-flex align-items-center">
+                        <div class="flag">
+                          <img src="{% static 'assets/images/flag.png' %}" alt="" />
+                        </div>
+                        <div class="address-info">
+                          <h6>United States</h6>
+                          <span>102 street 1234 Don</span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="marking-point"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Map Area -->
+    </main>
+    
+{% endblock content %}
+    

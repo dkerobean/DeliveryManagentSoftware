@@ -69,23 +69,8 @@
                       </li>
                     </ul>
                   </li>
-                  <li class="nav-item dropdown submenu">
-                    <a href="https://html.spiderthemes-demos.com/landpagy/comming-soon.html" class="nav-link">Comming Soon</a>
-                    <i class="arrow_carrot-right mobile_dropdown_icon" aria-hidden="false" data-bs-toggle="dropdown"></i>
-                    <ul class="dropdown-menu">
-                      <li class="nav-item">
-                        <a href="https://html.spiderthemes-demos.com/landpagy/comming-soon.html" class="nav-link">Comming Soon One</a>
-                      </li>
-                      <li class="nav-item">
-                        <a href="https://html.spiderthemes-demos.com/landpagy/comming-soon-2.html" class="nav-link">Comming Soon Two</a>
-                      </li>
-                      <li class="nav-item">
-                        <a href="https://html.spiderthemes-demos.com/landpagy/comming-soon-3.html" class="nav-link">Comming Soon Three</a>
-                      </li>
-                      <li class="nav-item">
-                        <a href="https://html.spiderthemes-demos.com/landpagy/comming-soon-4.html" class="nav-link">Comming Soon Four</a>
-                      </li>
-                    </ul>
+                  <li class="nav-item submenu">
+                    <a href="{% url 'contact' %}" class="nav-link">Contact Us</a>
                   </li>
                 </ul>
               </li>
@@ -161,26 +146,14 @@
                   </li>
                 </ul>
               </li>
-              <li class="nav-item dropdown submenu active">
-                <a href="https://html.spiderthemes-demos.com/landpagy/blog.html" class="nav-link dropdown-toggle">Blog</a>
-                <i class="arrow_carrot-right mobile_dropdown_icon" aria-hidden="false" data-bs-toggle="dropdown"></i>
-                <ul class="dropdown-menu">
-                  <li class="nav-item">
-                    <a href="https://html.spiderthemes-demos.com/landpagy/blog.html" class="nav-link">Blog</a>
-                  </li>
-                  <li class="nav-item">
-                    <a href="https://html.spiderthemes-demos.com/landpagy/blog-single.html" class="nav-link">Blog Single</a>
-                  </li>
-                  <li class="nav-item">
-                    <a href="https://html.spiderthemes-demos.com/landpagy/blog-grid.html" class="nav-link">Extended Grid</a>
-                  </li>
-                </ul>
+              <li class="nav-item">
+                <a href="{% url 'contact' %}" class="nav-link">Contact</a>
               </li>
             </ul>
             
             {% if request.user.is_authenticated %}
 
-              <a class="btn btn-red" href="{% url 'user-logout' %}">Log Out</a>
+              <a class="btn btn-red" href="{% url 'user_home' %}">Dashboard</a>
 
             {% else %}
 
