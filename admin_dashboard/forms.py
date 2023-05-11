@@ -19,6 +19,9 @@ class EditDeliveryForm(ModelForm):
             
         self.fields['rider'].widget.attrs.update({'class': 'form-control form-select select2'})
         self.fields['order_status'].widget.attrs.update({'class': 'form-control form-select select2'})
+        
+        self.fields['pickup_location'].widget.attrs.update({'id': 'pickup-location'})
+        self.fields['destination_location'].widget.attrs.update({'id': 'destination-location'})
             
             
  

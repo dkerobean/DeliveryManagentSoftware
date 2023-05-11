@@ -78,6 +78,8 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
+    <script src="https://maps.googleapis.com/maps/api/js?key={{google_api_key}}&libraries=places"></script>
+    
     
     {% if messages %}
 
@@ -88,3 +90,24 @@
     {% endfor %}
         
     {% endif %}
+
+
+    <script>
+        var locationInput = document.getElementById('pickup-location');
+        var autocomplete = new google.maps.places.Autocomplete(locationInput, {
+        componentRestrictions: {country: 'GH'}
+        });
+
+        var locationInput = document.getElementById('destination-location');
+        var autocomplete = new google.maps.places.Autocomplete(locationInput, {
+        componentRestrictions: {country: 'GH'}
+        });
+
+        autocomplete.addListener('place_changed', function() {
+        var place = autocomplete.getPlace();
+        // Do something with the selected place, such as display its details
+        });
+
+        google.maps.event.addDomListener(window, 'load', initAutocomplete);
+
+    </script>

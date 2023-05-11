@@ -8,6 +8,8 @@ from frontend.models import BookDelivery, Contact, DeliveryAction, DeliveryType
 from .forms import EditDeliveryForm, BookDeliveryForm, AddDeliveryActionForm, AddDeliveryTypeForm
 import uuid 
 from django.urls import reverse
+import googlemaps
+from django.conf import settings
 
 
 
@@ -141,13 +143,31 @@ def orderDetails(request, pk):
 @user_passes_test(is_admin)
 def editOrder(request, pk):
     
+    google_api_key = getattr(settings, 'GOOGLE_MAPS_API_KEY', None)
+    
     order = BookDelivery.objects.get(id=pk)
     form = EditDeliveryForm(instance=order)
     
     if request.method == "POST":
         form = EditDeliveryForm(request.POST, instance=order)
         if form.is_valid():
-            form.save()
+            
+            data = form.save(commit=False)
+            
+            # Get Geocodes 
+            gmaps = googlemaps.Client(google_api_key)
+            location1 = gmaps.geocode(form.instance.pickup_location)[
+                0]['geometry']['location']
+            location2 = gmaps.geocode(form.instance.destination_location)[0]['geometry']['location']
+        
+            # Calculate Distance
+            distance_result = gmaps.distance_matrix((location1['lat'], location1['lng']), (location2['lat'], location2['lng']))
+            distance = distance_result['rows'][0]['elements'][0]['distance']['value']
+            distance_km = distance // 1000
+            
+            form.instance.price = 2 * distance_km
+        
+            data.save()
             messages.success(request, "Order edited successfully")
             #url = reverse('order-details', kwargs={'pk': order.id})
             return redirect('all-orders')
@@ -156,6 +176,8 @@ def editOrder(request, pk):
     context = {
         'form':form, 
         'order':order,
+        'google_api_key':google_api_key, 
+        
     }
     
 
