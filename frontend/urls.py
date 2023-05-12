@@ -15,6 +15,10 @@ urlpatterns = [
     
     path('contact/', views.contactPage, name="contact"), 
     
+    path('track-order/', views.trackOrder, name="track-order"),
+    path('order-results/', views.orderResults, name="order-results"),
+    
+    
     
 ]
 

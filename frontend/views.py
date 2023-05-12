@@ -66,14 +66,14 @@ def userLogin(request):
             messages.error(request, 'Username or password incorrect')
     
     
-    return render(request, 'frontend/login.html')
+    return render(request, 'frontend/auth/login.html')
 
 
 def userLogout(request):
     logout(request)
     return redirect('home')
 
-    return render(request, 'frontend/login.html')
+    return render(request, 'frontend/auth/login.html')
 
 
 def userSignUp(request):
@@ -93,7 +93,7 @@ def userSignUp(request):
         'form':form
     }
     
-    return render(request, 'frontend/register.html', context)
+    return render(request, 'frontend/auth/register.html', context)
 
 
 """ 404 PAGE """
@@ -144,7 +144,7 @@ def bookDelivery(request):
         'deliveryType':deliveryType
     }
     
-    return render(request, 'frontend/book_delivery.html', context)
+    return render(request, 'frontend/delivery/book_delivery.html', context)
 
 
 def confirmDelivery(request):
@@ -189,7 +189,42 @@ def confirmDelivery(request):
         'price':price
     }
     
-    return render(request, 'frontend/confirm_delivery.html', context)
+    return render(request, 'frontend/delivery/confirm_delivery.html', context)
+
+
+""" TRACK ORDER """
+
+def trackOrder(request):
+    
+    status = None
+    
+    if request.method == "POST":
+        order_number = request.POST['order-number']
+        
+        try:
+            order = BookDelivery.objects.get(order_number=order_number)
+            status = order.order_status
+        except:
+            status = None
+            
+        request.session['status'] = str(status)
+            
+        return redirect('order-results')
+        
+    
+    return render(request, 'frontend/track_order/track_order.html')
+
+
+def orderResults(request):
+    
+    order_status = request.session['status']
+
+
+    context = {
+        'order_status':order_status
+    }   
+     
+    return render(request, 'frontend/track_order/order_results.html', context)
 
     
     
