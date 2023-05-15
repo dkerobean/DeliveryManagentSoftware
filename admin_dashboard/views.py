@@ -22,12 +22,31 @@ def is_admin(user):
 @user_passes_test(is_admin)
 def homePage(request):
     
+    orders = BookDelivery.objects.filter(is_deleted=False)
+    cancelled = BookDelivery.objects.filter(is_deleted=True)
+    pending = BookDelivery.objects.filter(order_status='Pending', is_deleted=False)
+    completed = BookDelivery.objects.filter(order_status='Completed')
+    
+    total_orders = orders.count
+    pending_orders = pending.count
+    completed_orders = completed.count
+    cancelled_orders = cancelled.count
+    
     all_messages = Contact.objects.all()
-    boolq = True
+    
     
     context = {
-        'all_messages':all_messages, 
-        'bool':boolq
+        'all_messages':all_messages,
+        'orders': orders,
+        'cancelled': cancelled,
+        'pending': pending,
+        'completed': completed, 
+        
+        'total_orders': total_orders,
+        'pending_orders': pending_orders,
+        'completed_orders': completed_orders,
+        'cancelled_orders': cancelled_orders,
+        
     }
     
     return render(request, 'admin_dashboard/index.html', context)
@@ -96,7 +115,7 @@ def allOrders(request):
     
     orders = BookDelivery.objects.filter(is_deleted=False)
     cancelled = BookDelivery.objects.filter(is_deleted=True)
-    pending = BookDelivery.objects.filter(order_status='Pending')
+    pending = BookDelivery.objects.filter(order_status='Pending', is_deleted=False)
     completed = BookDelivery.objects.filter(order_status='Completed')
     
     # add order 
