@@ -7,14 +7,32 @@ from django.contrib import messages
 
 
 @login_required(login_url="user-login")
-def homePage(request):
+def homePage(request, pk):
     
-    user = request.user.profile
-    deliveries = user.deliveries.all()
+    user = Profile.objects.get(id=pk)
+    deliveries = user.deliveries.filter(is_deleted=False)
+    completed = user.deliveries.filter(order_status="Completed")
+    pending = user.deliveries.filter(order_status="Pending", is_deleted=False)
+    cancelled = user.deliveries.filter(is_deleted="True")
     
+    total_orders = deliveries.count
+    pending_orders = pending.count
+    completed_orders = completed.count
+    cancelled_orders = cancelled.count
+        
     context = {
-        'deliveries':deliveries,
-        'user':user
+        'deliveries': deliveries,
+        'completed': completed,
+        'pending': pending,
+        'cancelled': cancelled,
+        'user': user, 
+        
+        'total_orders':total_orders, 
+        'pending_orders':pending_orders, 
+        'completed_orders':completed_orders, 
+        'cancelled_orders':cancelled_orders,
+        
+        
     }     
     return render(request, 'user_dashboard/index.html', context)
 
@@ -48,7 +66,7 @@ def ordersPage(request, pk):
     user = Profile.objects.get(id=pk)
     deliveries = user.deliveries.filter(is_deleted=False)
     completed = user.deliveries.filter(order_status="Completed")
-    pending = user.deliveries.filter(order_status="Pending")
+    pending = user.deliveries.filter(order_status="Pending", is_deleted=False)
     cancelled = user.deliveries.filter(is_deleted="True")
     
     context = {

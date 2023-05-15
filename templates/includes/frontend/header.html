@@ -43,7 +43,7 @@
             
             {% if request.user.is_authenticated %}
 
-              <a class="btn btn-red" href="{% url 'user_home' %}">Dashboard</a>
+              <a class="btn btn-red" href="{% url 'user_home' request.user.profile.id %}">Dashboard</a>
 
             {% else %}
 
