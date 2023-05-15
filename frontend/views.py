@@ -219,7 +219,6 @@ def orderResults(request):
     
     order_status = request.session['status']
 
-
     context = {
         'order_status':order_status
     }   
