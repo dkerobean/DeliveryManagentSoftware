@@ -3,7 +3,7 @@
 <header class="header-area">
       <nav class="navbar navbar-expand-lg menu_three sticky-nav">
         <div class="container-fluid">
-          <a class="navbar-brand header_logo" href="https://html.spiderthemes-demos.com/landpagy/index.html">
+          <a class="navbar-brand header_logo" href="{% url 'home' %}">
             <img class="main_logo" src="{% static 'assets/images/logo.svg' %}" alt="logo" />
           </a>
           <button
@@ -33,7 +33,7 @@
                 <a href="{% url 'book-delivery' %}" class="nav-link">Book a delivery</a>              
               </li>
               <li class="nav-item submenu active">
-                <a href="index.html#" class="nav-link ">Track Order</a>                             
+                <a href="{% url 'track-order' %}" class="nav-link ">Track Order</a>                             
               </li>             
               
               <li class="nav-item">
@@ -43,7 +43,7 @@
             
             {% if request.user.is_authenticated %}
 
-              <a class="btn btn-red" href="{% url 'user_home' %}">Dashboard</a>
+              <a class="btn btn-red" href="{% url 'user_home' request.user.profile.id %}">Dashboard</a>
 
             {% else %}
 
