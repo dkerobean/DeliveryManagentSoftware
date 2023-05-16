@@ -127,7 +127,7 @@ def bookDelivery(request):
         # Calculate Distance
         distance_result = gmaps.distance_matrix((location1['lat'], location1['lng']), (location2['lat'], location2['lng']))
         distance = distance_result['rows'][0]['elements'][0]['distance']['value']
-        distance_km = distance / 1000 
+        distance_km = round(distance / 1000, 1)
         
         request.session['distance_km'] = distance_km
         request.session['pickup_location'] = pickup_location
@@ -166,8 +166,7 @@ def confirmDelivery(request):
     item_type = request.session['item_type']
     
     # Price of delivery
-    price = 2 * distance 
-    price_1 = math.ceil(price)
+    price = math.ceil(2 * distance)
     
     if request.method == "POST":
         sender_contact = request.POST['sender_contact']

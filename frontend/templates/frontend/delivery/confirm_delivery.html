@@ -31,8 +31,14 @@
                     </div>
                     <div class="col-6">
                             <div class="contact-form-button">
-                                <a href="{% if request.META.HTTP_REFERER %}{{ request.META.HTTP_REFERER }}{% else %}javascript:history.back(){% endif %}"" class="btn btn-red">Back</a>
+                                <button onclick="goBack()" class="btn btn-red">Back</button>
                             </div>
+
+                            <script>
+                            function goBack() {
+                              window.history.back();
+                            }
+                            </script>
                     </div>
                     <div class="col-6">
                             <div class="contact-form-button">
@@ -55,56 +61,8 @@
             </iframe>
                 <h4>Distance: {{distance}} KM</h4>
             </div>
-          </div>
-
-          <div class="row pt-lg-4 pt-0">
-            <div class="col-md-2 col-sm-4">
-              <div class="client-image wow fadeInRight" data-wow-delay="0.1s">
-                <img src="{% static 'assets/images/brand/brand-6.svg' %}" alt="brand" />
-              </div>
-            </div>
-            <div class="col-md-2 col-sm-4">
-              <div class="client-image wow fadeInRight" data-wow-delay="0.3s">
-                <img src="{% static 'assets/images/brand/brand-7.svg' %}" alt="brand" />
-              </div>
-            </div>
-            <div class="col-md-2 col-sm-4">
-              <div class="client-image wow fadeInRight" data-wow-delay="0.5s">
-                <img src="{% static 'assets/images/brand/brand-8.svg' %}" alt="brand" />
-              </div>
-            </div>
-            <div class="col-md-2 col-sm-4">
-              <div class="client-image wow fadeInRight" data-wow-delay="0.7s">
-                <img src="{% static 'assets/images/brand/brand-9.svg' %}" alt="brand" />
-              </div>
-            </div>
-            <div class="col-md-2 col-sm-4">
-              <div class="client-image wow fadeInRight" data-wow-delay="0.9s">
-                <img src="{% static 'assets/images/brand/brand-10.svg' %}" alt="brand" />
-              </div>
-            </div>
-            <div class="col-md-2 col-sm-4">
-              <div class="client-image wow fadeInRight" data-wow-delay="1.1s">
-                <img src="{% static 'assets/images/brand/brand-11.svg' %}" alt="brand" />
-              </div>
-            </div>
-          </div>
-
-          <div class="client-meta">
-            <ul class="client-review-icon">
-              <li><i class="fas fa-star"></i></li>
-              <li><i class="fas fa-star"></i></li>
-              <li><i class="fas fa-star"></i></li>
-              <li><i class="fas fa-star"></i></li>
-              <li><i class="fas fa-star"></i></li>
-            </ul>
-            <div class="client-review-number"><span>4.9</span> Stars</div>
-            <div class="client-review"><span>5121+</span> Reviews</div>
-          </div>
-
-          <div class="row text-center">
-            <a class="customer-more" href="index-hrm.html#">More customer stories <i class="arrow_right"></i></a>
-          </div>
+          </div>         
+          
         </div>
       </section>
       <!-- Banner Area -->
