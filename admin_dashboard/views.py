@@ -65,7 +65,7 @@ def loginPage(request):
         password = request.POST['password']
 
         try:
-            user = User.ogjects.get(username=username)
+            user = User.objects.get(username=username)
         except:
             messages.error(request, 'Username does not exist')
 
