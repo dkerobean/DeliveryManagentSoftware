@@ -418,15 +418,15 @@ def addDeliveryMultiplier(request):
     
     record = DeliveryMultiplier.objects.all()
     
-    if not record:
+    if record:
         messages.error(request, "Only one record allowed")
     
-        if request.method == "POST":
-            multiplier = request.POST.get('multiplier')
-            add_multiplier = DeliveryMultiplier(multiplier=multiplier)
-            add_multiplier.save()
-            messages.success(request, 'Multuplier Added')
-            return redirect('view-multiplier')
+    elif request.method == "POST":
+        multiplier = request.POST.get('multiplier')
+        add_multiplier = DeliveryMultiplier(multiplier=multiplier)
+        add_multiplier.save()
+        messages.success(request, 'Multuplier Added')
+        return redirect('view-multiplier')
     
     return render(request, 'admin_dashboard/delivery_price/add.html')
 
@@ -461,7 +461,7 @@ def editDeliveryMultiplier(request, pk):
         new_multiplier = request.POST['multiplier']
         multiplier.multiplier = new_multiplier
         multiplier.save()
-        messages.success(request, 'Multuplier Edited')
+        messages.success(request, 'Multuplier Updated Successfully')
         return redirect('view-multiplier')
     
     
