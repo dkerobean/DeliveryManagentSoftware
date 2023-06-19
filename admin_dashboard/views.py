@@ -5,6 +5,7 @@ from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.decorators import user_passes_test
 from frontend.models import BookDelivery, Contact, DeliveryAction, DeliveryType
+from .models import DeliveryMultiplier
 from .forms import EditDeliveryForm, BookDeliveryForm, AddDeliveryActionForm, AddDeliveryTypeForm
 import uuid 
 from django.urls import reverse
@@ -405,6 +406,50 @@ def deleteDeliveryType(request, pk):
     }
 
     return render(request, 'admin_dashboard/delete.html', context)
+
+
+""" DELIVERY PRICE """
+
+@login_required(login_url='admin-login')
+@user_passes_test(is_admin)
+def addDeliveryMultiplier(request):
+    
+    if request.method == "POST":
+        multiplier = request.POST.get('multiplier')
+        add_multiplier = DeliveryMultiplier(multiplier=multiplier)
+        add_multiplier.save()
+        messages.success(request, 'Multuplier Added')
+        return redirect('view-multiplier')
+    
+    return render(request, 'admin_dashboard/delivery_price/add.html')
+
+
+@login_required(login_url='admin-login')
+@user_passes_test(is_admin)
+def viewDeliveryMultiplier(request):
+    
+    multipliers = DeliveryMultiplier.objects.all()
+    
+    #convert multiplier to string
+    multiplier_strings = [
+        str(multiplier.multiplier) for multiplier in multipliers
+    ]
+    
+    context = {
+        'multiplier_strings':multiplier_strings
+    }
+    
+    return render(request, 'admin_dashboard/delivery_price/view.html', context)
+
+
+@login_required(login_url='admin-login')
+@user_passes_test(is_admin)
+def editDeliveryMultiplier(request, pk):
+    
+    return render(request, 'admin_dashboard/delivery_price/edit.html')
+    
+    
+    
 
 
     

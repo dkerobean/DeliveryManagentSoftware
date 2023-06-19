@@ -4,42 +4,6 @@
 
 {% block content %}
 
-
-    <!-- Add deliveryType Modal-->
-        <div class="modal fade" id="country-selector">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content country-select-modal">
-                    <div class="modal-header">
-                        <h6 class="modal-title">Add Delivery Type</h6><button aria-label="Close" class="btn-close"
-                            data-bs-dismiss="modal" type="button"><span aria-hidden="true">×</span></button>
-                    </div>
-                    <div class="modal-body col-md-12">
-                        <div class="card-body">
-                            <form action="{% url 'add-delivery-type' %}" method="POST">
-                                {% csrf_token %}                                           
-                                    <div class="row">
-                                        {% for field in form %}
-                                            <div class="col-sm-10 col-md-10">
-                                                <div class="form-group">
-                                                    <label class="form-label">{{field.label}} <span class="text-red">*</span></label>
-                                                    {{field}}                                                                                                                        
-                                                </div>
-                                                {% for error in field.errors %}
-                                                    <p style="color:red;">{{error}}</p>
-                                                {% endfor %}
-                                            </div>
-                                        {% endfor %}
-
-                                    <button type="submit" class="btn btn-primary mt-4 mb-0">Add</button>                                                                                
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Add deliveryType Modal -->
-
     <div class="main-content app-content mt-0">
                 <div class="side-app">
 
@@ -56,9 +20,7 @@
                                 </ol>
                             </div>
                         </div>
-                        <!-- PAGE-HEADER END -->
-
-                        
+                        <!-- PAGE-HEADER END -->                       
 
                         <!-- ROW-4 -->
                         <div class="row">
@@ -96,30 +58,24 @@
                                                                         </thead>
                                                                         <tbody>                                                             
                                                                             <button class="btn btn-primary text-center m-3">
-                                                                                <a class="" data-bs-target="#country-selector"
-                                                                                data-bs-toggle="modal"> Add Delivery Type </a>
+                                                                                <a class="text-white"href="{% url 'add-multiplier' %}"> Add Multiplier </a>
                                                                             </button>
-                                                                        {% for delivery in deliveryType %}
+                                                                        {% for number in multiplier_strings %}
                                                                             <tr class="border-bottom">
                                                                                 <td class="">
                                                                                     <div class="mt-0 mt-sm-2 d-block">
-                                                                                        <h6
-                                                                                            class="mb-0 fs-14 fw-semibold">
-                                                                                            {{delivery.item_type}}</h6>
+                                                                                        <h6 class="mb-0 fs-14 fw-semibold">
+                                                                                            {{ number }}</h6>
                                                                                     </div>
                                                                                 </td>                                                                            
                                                                                 <td>
                                                                                     
                                                                                     <div class="g-2">
                                                                                         <a class="btn text-primary btn-sm"
-                                                                                            href="{% url 'edit-delivery-type' delivery.id %}"
+                                                                                            href=""
                                                                                             data-bs-original-title="Edits"><span
                                                                                                 class="fe fe-edit fs-14"></span></a>                                                                                       
-                                                                                        <a class="btn text-danger btn-sm"
-                                                                                                href="{% url 'delete-delivery-type' delivery.id %}"
-                                                                                            data-bs-original-title="Delete"><span
-                                                                                                class="fe fe-trash-2 fs-14"></span></a>
-                                                                                                
+                                                                                        
                                                                                     </div>
                                                                                 </td>
                                                                             </tr>

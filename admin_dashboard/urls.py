@@ -23,6 +23,10 @@ urlpatterns = [
     
     path('deliveryaction/add/', views.viewDeliveryAction, name="add-delivery-action"),
     path('deliveryaction/edit/<str:pk>/',views.editDeliveryAction, name="edit-delivery-action"),
-    path('deliveryaction/delete/<str:pk>/', views.deleteDeliveryAction, name="delete-delivery-action")
+    path('deliveryaction/delete/<str:pk>/', views.deleteDeliveryAction, name="delete-delivery-action"), 
+    
+    path('multiplier/add/', views.addDeliveryMultiplier, name="add-multiplier"),
+    path('multiplier/view/', views.viewDeliveryMultiplier, name="view-multiplier"),
+    path('multiplier/edit/<str:pk>/', views.addDeliveryMultiplier, name="edit-multiplier")
         
 ]
