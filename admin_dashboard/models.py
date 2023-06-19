@@ -7,6 +7,12 @@ class DeliveryMultiplier(models.Model):
     id = models.UUIDField(default=uuid.uuid4, unique=True,
                           primary_key=True, editable=False)
     
+    def save(self, *args, **kwargs):
+        if self.pk:
+            raise ValueError("Only One Record Allowed")
+        super().save(*args, **kwargs)
+       
+    
     def __str__(self):
         return self.multiplier
     

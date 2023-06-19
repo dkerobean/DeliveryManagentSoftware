@@ -414,12 +414,17 @@ def deleteDeliveryType(request, pk):
 @user_passes_test(is_admin)
 def addDeliveryMultiplier(request):
     
-    if request.method == "POST":
-        multiplier = request.POST.get('multiplier')
-        add_multiplier = DeliveryMultiplier(multiplier=multiplier)
-        add_multiplier.save()
-        messages.success(request, 'Multuplier Added')
-        return redirect('view-multiplier')
+    record = DeliveryMultiplier.objects.all()
+    
+    if not record:
+        messages.error(request, "Only one record allowed")
+    
+        if request.method == "POST":
+            multiplier = request.POST.get('multiplier')
+            add_multiplier = DeliveryMultiplier(multiplier=multiplier)
+            add_multiplier.save()
+            messages.success(request, 'Multuplier Added')
+            return redirect('view-multiplier')
     
     return render(request, 'admin_dashboard/delivery_price/add.html')
 
