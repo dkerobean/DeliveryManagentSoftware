@@ -71,10 +71,12 @@
                                                                                 <td>
                                                                                     
                                                                                     <div class="g-2">
+                                                                                        {% for id in multipliers %}
                                                                                         <a class="btn text-primary btn-sm"
-                                                                                            href=""
+                                                                                            href="{% url 'edit-multiplier' id.id %}"
                                                                                             data-bs-original-title="Edits"><span
-                                                                                                class="fe fe-edit fs-14"></span></a>                                                                                       
+                                                                                                class="fe fe-edit fs-14"></span></a>
+                                                                                        {% endfor %}                                                                                                                                                       
                                                                                         
                                                                                     </div>
                                                                                 </td>

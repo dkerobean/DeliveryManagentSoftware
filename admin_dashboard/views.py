@@ -435,8 +435,10 @@ def viewDeliveryMultiplier(request):
         str(multiplier.multiplier) for multiplier in multipliers
     ]
     
+    
     context = {
-        'multiplier_strings':multiplier_strings
+        'multiplier_strings':multiplier_strings,
+        'multipliers':multipliers
     }
     
     return render(request, 'admin_dashboard/delivery_price/view.html', context)
@@ -446,7 +448,22 @@ def viewDeliveryMultiplier(request):
 @user_passes_test(is_admin)
 def editDeliveryMultiplier(request, pk):
     
-    return render(request, 'admin_dashboard/delivery_price/edit.html')
+    multiplier = DeliveryMultiplier.objects.get(id=pk)
+    
+    if request.method == "POST":
+        new_multiplier = request.POST['multiplier']
+        multiplier.multiplier = new_multiplier
+        multiplier.save()
+        messages.success(request, 'Multuplier Edited')
+        return redirect('view-multiplier')
+    
+    
+    context = {
+        'multiplier':multiplier
+    }
+        
+    
+    return render(request, 'admin_dashboard/delivery_price/edit.html', context)
     
     
     

@@ -1,0 +1,60 @@
+{% extends 'layouts/admin_dashboard.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<!--app-content open-->
+            <div class="main-content app-content mt-0">
+                <div class="side-app">
+
+                    <!-- CONTAINER -->
+                    <div class="main-container container-fluid">
+
+                        <!-- PAGE-HEADER -->
+                        <div class="page-header">
+                            <h1 class="page-title">Add Multiplier</h1>
+                            <div>
+                                <ol class="breadcrumb">
+                                    <li class="breadcrumb-item"><a href="javascript:void(0)">Forms</a></li>
+                                    <li class="breadcrumb-item active" aria-current="page">Form-Layouts</li>
+                                </ol>
+                            </div>
+                        </div>
+                        <!-- PAGE-HEADER END -->                       
+
+                        <!--Row -->
+                        <div class="row">
+                            <div class="col-md-12 col-xl-6 mx-auto">                              
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h3 class="card-title">Edit Multiplier</h3>
+                                    </div>
+                                    <div class="card-body">
+                                        <form action="" method="POST">
+                                            {% csrf_token %}                                           
+                                                <div class="row">                                                    
+                                                        <div class="col-sm-6 col-md-6">
+                                                            <class="form-group">
+                                                                <label class="form-label">Multiplier<span class="text-red">*</span></label>               
+                                                                    <input name="multiplier" class="form-control mb-4" placeholder="0.00" type="floatformat">                                                                                                                                                              
+                                                            </div>                                                           
+                                                        </div>                                                   
+
+                                                <button type="submit" class="btn btn-primary mt-4 mb-0">Add</button>                                                                                
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>                               
+                            </div>
+                        </div>
+                        <!--End Row-->
+                    </div>
+                    <!-- CONTAINER CLOSED -->
+
+                </div>
+            </div>
+            <!--app-content closed-->
+
+{% endblock content %}
+    

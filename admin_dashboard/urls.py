@@ -27,6 +27,6 @@ urlpatterns = [
     
     path('multiplier/add/', views.addDeliveryMultiplier, name="add-multiplier"),
     path('multiplier/view/', views.viewDeliveryMultiplier, name="view-multiplier"),
-    path('multiplier/edit/<str:pk>/', views.addDeliveryMultiplier, name="edit-multiplier")
+    path('multiplier/edit/<str:pk>/', views.editDeliveryMultiplier, name="edit-multiplier")
         
 ]
