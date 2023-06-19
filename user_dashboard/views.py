@@ -48,7 +48,7 @@ def editProfile(request, pk):
         if form.is_valid():
             form.save()
             messages.success(request, 'Profile Updated')
-            return redirect('user_home')
+            return redirect('user_home', user.id)
     
     
     context = {
