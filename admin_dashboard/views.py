@@ -186,6 +186,8 @@ def editOrder(request, pk):
             distance = distance_result['rows'][0]['elements'][0]['distance']['value']
             distance_km = distance // 1000
             
+            #price of delivery
+            multiplier = DeliveryMultiplier.objects.all()
             form.instance.price = math.ceil(2 * distance_km)
         
             data.save()

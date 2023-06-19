@@ -10,6 +10,7 @@ import googlemaps
 import math
 from .models import BookDelivery, Contact, Profile, DeliveryAction, DeliveryType
 from django.contrib.auth.models import AnonymousUser
+from admin_dashboard.models import DeliveryMultiplier
 
 
 """ HOME PAGE """
@@ -166,6 +167,7 @@ def confirmDelivery(request):
     item_type = request.session['item_type']
     
     # Price of delivery
+    multiplier = DeliveryMultiplier.objects.all()
     price = math.ceil(2 * distance)
     
     if request.method == "POST":
