@@ -187,8 +187,12 @@ def editOrder(request, pk):
             distance_km = distance // 1000
             
             #price of delivery
-            multiplier = DeliveryMultiplier.objects.all()
-            form.instance.price = math.ceil(2 * distance_km)
+            multiplier = DeliveryMultiplier.objects.all().first()
+            
+            # Convert the multiplier to a float
+            multiplier_value = float(multiplier.multiplier)
+            
+            form.instance.price = math.ceil(multiplier_value * distance_km)
         
             data.save()
             messages.success(request, "Order edited successfully")
@@ -199,8 +203,7 @@ def editOrder(request, pk):
     context = {
         'form':form, 
         'order':order,
-        'google_api_key':google_api_key, 
-        
+        'google_api_key':google_api_key,   
     }
     
 

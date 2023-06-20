@@ -152,7 +152,6 @@ def confirmDelivery(request):
     
     google_api_key = getattr(settings, 'GOOGLE_MAPS_API_KEY', None)
     
-    
     # Check if user is autenticated or not
     if not isinstance(request.user, AnonymousUser):
         profile = request.user.profile
@@ -166,9 +165,14 @@ def confirmDelivery(request):
     item = request.session['item']
     item_type = request.session['item_type']
     
-    # Price of delivery
-    multiplier = DeliveryMultiplier.objects.all()
-    price = math.ceil(2 * distance)
+    # Calculate price of delivery
+    multiplier = DeliveryMultiplier.objects.first()
+    
+    # Convert the multiplier to a float
+    multiplier_value = float(multiplier.multiplier)
+    
+    price = math.ceil(multiplier_value * distance)
+    
     
     if request.method == "POST":
         sender_contact = request.POST['sender_contact']
@@ -176,7 +180,7 @@ def confirmDelivery(request):
         
         delivery_details = BookDelivery(profile=profile, item=item, item_type=item_type, pickup_location=pickup_location, 
                                         destination_location=destination_location, sender_contact=sender_contact, 
-                                        reciever_contact=reciever_contact, price=price_1)
+                                        reciever_contact=reciever_contact, price=price)
         delivery_details.save()
         messages.success(request, 'Delivery Booked, You Will Recieve A Call')
         return redirect('home')
