@@ -6,6 +6,7 @@ from django.contrib.auth import login, logout, authenticate
 from django.contrib import messages
 from .forms import CustomUserCreationForm
 from django.conf import settings
+from django.contrib.auth.decorators import login_required
 import googlemaps
 import math
 from .models import BookDelivery, Contact, Profile, DeliveryAction, DeliveryType
@@ -53,8 +54,8 @@ def userLogin(request):
         password = request.POST['password']
         
         try:
-            user = User.ogjects.get(username=username)
-        except:
+            user = User.objects.get(username=username)
+        except User.DoesNotExist:
             messages.error(request, 'Username does not exist')
             
         user = authenticate(request, username=username, password=password)
@@ -65,6 +66,8 @@ def userLogin(request):
             return redirect('home')
         else:
             messages.error(request, 'Username or password incorrect')
+            return redirect('login')
+
     
     
     return render(request, 'frontend/auth/login.html')
@@ -106,6 +109,7 @@ def handler404(request, exception):
 
 """ BOOK DELIVERY """
 
+@login_required(login_url="user-login")
 def bookDelivery(request):
     
     google_api_key = getattr(settings, 'GOOGLE_MAPS_API_KEY', None)
@@ -148,6 +152,7 @@ def bookDelivery(request):
     return render(request, 'frontend/delivery/book_delivery.html', context)
 
 
+@login_required(login_url="user-login")
 def confirmDelivery(request):
     
     google_api_key = getattr(settings, 'GOOGLE_MAPS_API_KEY', None)
