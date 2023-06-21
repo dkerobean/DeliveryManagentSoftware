@@ -22,11 +22,11 @@
                     <div class="col-lg-12">
                       <div class="contact-form-name">
                         <label for="topic">Your contact</label>
-                        <input name="sender_contact" type="text" required maxlength=10/>
+                        <input name="sender_contact" type="number" required maxlength=10/>
                       </div>
                       <div class="contact-form-name">
                         <label for="topic">Recievers contact</label>
-                        <input name="reciever_contact" type="text" id="phone" required maxlength=10 />
+                        <input name="reciever_contact" type="number" id="phone" required maxlength=10 />
                       </div>
                     </div>
                     <div class="col-6">
@@ -60,6 +60,7 @@
                 src="https://www.google.com/maps/embed/v1/directions?key={{google_api_key}}&origin={{pickup_location}}&destination={{destination_location}}">
             </iframe>
                 <h4>Distance: {{distance}} KM</h4>
+                <h4>Estimate: GHS {{ price }}</h4>
             </div>
           </div>         
           
