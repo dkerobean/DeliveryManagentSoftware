@@ -109,6 +109,7 @@ def handler404(request, exception):
 
 """ BOOK DELIVERY """
 
+
 @login_required(login_url="user-login")
 def bookDelivery(request):
     
