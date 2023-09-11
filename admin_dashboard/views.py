@@ -486,4 +486,3 @@ def editDeliveryMultiplier(request, pk):
     }
 
     return render(request, 'admin_dashboard/delivery_price/edit.html', context)
-
