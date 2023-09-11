@@ -10,6 +10,8 @@
 (function ($) {
   ('use strict');
 
+    // Prevent text capitalization in all input elements
+  $('input').css('text-transform', 'none');
   /*============= preloader js css =============*/
   var cites = [];
   cites[0] = 'We design Landpagy for the readers, optimizing not for page views or engagement';
