@@ -3,5 +3,3 @@ from .models import DeliveryMultiplier
 
 
 admin.site.register(DeliveryMultiplier)
-
-
