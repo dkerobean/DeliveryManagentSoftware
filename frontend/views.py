@@ -63,10 +63,11 @@ def userLogin(request):
         if user is not None:
             login(request, user)
             messages.success(request, 'Logged In')
-            return redirect('home')
+            return redirect(request.GET.get('next', 'book-delivery'))
+
         else:
             messages.error(request, 'Username or password incorrect')
-            return redirect('login')
+            return redirect('user-login')
 
     return render(request, 'frontend/auth/login.html')
 
