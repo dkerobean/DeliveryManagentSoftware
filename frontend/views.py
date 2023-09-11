@@ -129,18 +129,12 @@ def bookDelivery(request):
         # Get Geocodes
         gmaps = googlemaps.Client(google_api_key)
         location1 = gmaps.geocode(pickup_location)[0]['geometry']['location']
-
-        location2 = gmaps.geocode(destination_location)[0]['geometry']
-        ['location']
+        location2 = gmaps.geocode(destination_location)[0]['geometry']['location'] # noqa
 
         # Calculate Distance
-        distance_result = gmaps.distance_matrix((location1['lat'],
-                                                 location1['lng']), (
-                                                     location2['lat'],
-                                                     location2['lng']))
+        distance_result = gmaps.distance_matrix((location1['lat'], location1['lng']), (location2['lat'], location2['lng'])) # noqa
 
-        distance = distance_result['rows'][0]['elements'][0]
-        ['distance']['value']
+        distance = distance_result['rows'][0]['elements'][0]['distance']['value'] # noqa
 
         distance_km = round(distance / 1000, 1)
 
