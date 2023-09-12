@@ -2091,7 +2091,7 @@ a {
 }
 
 /*--
-    - Font Famaly 
+    - Font Famaly
 -----------------------------------------*/
 .font-poppins {
   font-family: "Poppins", sans-serif;
@@ -2181,8 +2181,8 @@ a {
   }
 }
 
-/*--- 
--- Padding 
+/*---
+-- Padding
 -------------------------------------------*/
 .pb-8 {
   padding-bottom: 2rem;
@@ -2472,7 +2472,6 @@ textarea {
   font-size: 1rem;
   color: #a0a1a3;
   background: #fff;
-  text-transform: capitalize;
   padding: 0.75rem 1.5625rem;
   margin: 0 0;
   width: 100%;
