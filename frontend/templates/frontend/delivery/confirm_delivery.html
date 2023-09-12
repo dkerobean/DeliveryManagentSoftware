@@ -1,4 +1,4 @@
-{% extends 'layouts/frontend_base.html' %}
+{% extends 'layouts/frontend_base_copy.html' %}
 
 {% load static %}
 
@@ -7,7 +7,7 @@
     <main>
       <!-- Banner Area -->
       <section class="banner-area-4 pb-140">
-        
+
         <div class="container">
           <div class="row flex-column-reverse flex-md-row">
             <div class="col-lg-7 col-md-6">
@@ -15,7 +15,7 @@
                 <h4>Estimate</h4>
                 <p>GHS {{price}}</p>
                 <div class="contact-form p-5">
-                  
+
                 <form method="POST">
                   {% csrf_token %}
                   <div class="row">
@@ -48,10 +48,10 @@
                   </div>
                 </form>
 
-                </div>                
+                </div>
               </div>
             </div>
-            
+
             <div class="col-md-5 offset-md-1 offset-lg-0 mt-5 ml-4">
               <iframe
                 width="600"
@@ -62,14 +62,13 @@
                 <h4>Distance: {{distance}} KM</h4>
                 <h4>Estimate: GHS {{ price }}</h4>
             </div>
-          </div>         
-          
+          </div>
+
         </div>
       </section>
       <!-- Banner Area -->
     </main>
-    
-    
+
+
 {% endblock content %}
 
-    

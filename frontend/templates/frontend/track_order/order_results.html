@@ -1,4 +1,4 @@
-{% extends 'layouts/frontend_base.html' %}
+{% extends 'layouts/frontend_base_copy.html' %}
 
 {% load static %}
 
@@ -6,6 +6,19 @@
 
     <main>
       <!-- Banner Area -->
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+
       <section class="banner-area-4 pb-140">
         <div class="banner-shapes">
           <div class="shape">
@@ -29,14 +42,14 @@
             <div class="col-lg-7 col-md-6">
               <div class="banner-left">
                 <h2 class="banner-title wow fadeInLeft" data-wow-delay="0.2s">
-                    Your order <span>{{order_number}}</span> is 
+                    Your order <span>{{order_number}}</span> is
                     {% if order_status == "Completed" %}
                         <button class="btn btn-success btn-lg">{{order_status}}</button>
                     {% else %}
-                        <button class="btn btn-warning btn-lg">{{order_status}}</button>  
+                        <button class="btn btn-warning btn-lg">{{order_status}}</button>
                     {% endif %}
-                        
-                </h2>                             
+
+                </h2>
               </div>
             </div>
             <div class="col-md-5 offset-md-1 offset-lg-0">
@@ -55,13 +68,12 @@
               </div>
             </div>
           </div>
-         
+
         </div>
       </section>
       <!-- Banner Area -->
     </main>
-    
-    
+
+
 {% endblock content %}
 
-    
