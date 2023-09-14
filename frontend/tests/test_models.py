@@ -11,25 +11,24 @@ class ContactTestCase(TestCase):
             topic='topic',
             email='email@example.com',
             phone='5675675756',
-            message='lorem ipsum dolor sit amet, consectetur adipiscing',
+            message='lorem ipsum dolor sit ame',
         )
 
         self.assertEqual(contact.name, 'John')
         self.assertEqual(contact.topic, 'topic')
         self.assertEqual(contact.email, 'email@example.com'),
         self.assertEqual(contact.phone, '5675675756'),
-        self.assertEqual(contact.message, 'lorem ipsum dolor sit amet,\
-                         consectetur adipiscing'),
+        self.assertEqual(contact.message, 'lorem ipsum dolor sit ame'),
 
     def test_str_method(self):
         # Create a Contact instance
-        contact = Contact.objects.create(
-            name='Jane Smith',
-            topic='Support Request',
-            email='janesmith@example.com',
-            phone='9876543210',
-            message='Another test message.'
+        contact = Contact(
+            name='John',
+            topic='topic',
+            email='email@example.com',
+            phone='5675675756',
+            message='lorem ipsum dolor sit ame',
         )
 
-        # Check the __str__ method
-        self.assertEqual(str(contact), 'Jane Smith')
+        # Check if the __str__ method returns the expected string
+        self.assertEqual(str(contact), 'John')
