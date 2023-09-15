@@ -53,20 +53,20 @@ class TestUserSignUp(TestCase):
 
         response = self.client.post(self.url, incomplete_data)
         self.assertEqual(response.status_code, 200)
-        #self.assertRedirects(response, self.url)
+        self.assertContains(response, 'This field is required.', count=1)
         # no user created
         self.assertEqual(get_user_model().objects.count(), 0)
 
 
-# class TestUserLogin(TestCase):
-#     def setUp(self):
-#         self.client = Client()
-#         self.url = reverse('user-login')
-#         self.data = {
-#             'username': 'testuser',
-#             'password': 'testpassword123',
-#         }
+class TestUserLogin(TestCase):
+    def setUp(self):
+        self.client = Client()
+        self.url = reverse('user-login')
+        self.data = {
+            'username': 'testuser',
+            'password': 'testpassword123',
+        }
 
-#     def test_login_success(self):
-#         resonse = self.client.post(self.url, inc)
-
+    def test_login_success(self):
+        response = self.client.post(self.url, self.data)
+        self.assertEqual(response.status_code, 302)

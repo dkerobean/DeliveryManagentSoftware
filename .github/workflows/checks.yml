@@ -1,7 +1,10 @@
 # .github/workflows/checks.yml
 name: Checks
 
-on: [push]
+on:
+  push:
+    branches:
+      - master
 
 jobs:
   flake8:
@@ -20,3 +23,6 @@ jobs:
       - name: Run flake8
         run: |
           flake8
+      - name: Run tests
+        run: |
+          python manage.py test

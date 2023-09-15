@@ -91,9 +91,7 @@ def userSignUp(request):
             user.save()
             messages.success(request, 'Registration Success')
             login(request, user)
-        else:
-            messages.error(request, 'Registration Failure')
-            return redirect('user-register')
+            return redirect('home')
 
     context = {
         'form': form
