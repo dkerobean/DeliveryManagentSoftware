@@ -1,4 +1,4 @@
-{% extends 'layouts/frontend_base.html' %}
+{% extends 'layouts/frontend_base_copy.html' %}
 
 {% load static %}
 
@@ -76,7 +76,7 @@
                         </div>
 
                         {% for error in field.errors  %}
-                          <p style="color:red;">{{error}}</p>
+                          <p style="color:red;">{{ error }}</p>
                         {% endfor %}
 
                       {% endfor %}
