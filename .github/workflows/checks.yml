@@ -20,6 +20,7 @@ jobs:
       - name: Install dependencies
         run: |
           pip install flake8
+          pip install Django
       - name: Run flake8
         run: |
           flake8
