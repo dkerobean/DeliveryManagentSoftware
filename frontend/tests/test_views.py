@@ -2,6 +2,7 @@ from django.test import TestCase, Client
 from frontend.models import Contact
 from django.urls import reverse
 from django.contrib.auth import get_user_model
+from django.contrib.auth.models import User
 
 
 class TestContact(TestCase):
@@ -54,6 +55,7 @@ class TestUserSignUp(TestCase):
         response = self.client.post(self.url, incomplete_data)
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, 'This field is required.', count=1)
+
         # no user created
         self.assertEqual(get_user_model().objects.count(), 0)
 
@@ -66,7 +68,34 @@ class TestUserLogin(TestCase):
             'username': 'testuser',
             'password': 'testpassword123',
         }
+        self.user = User.objects.create(
+            username='testuser',
+            email="testuser@example.com",
+            password='testpassword123'
+        )
 
     def test_login_success(self):
         response = self.client.post(self.url, self.data)
+        self.assertEqual(response.status_code, 302)
+        self.assertTrue(self.user.is_authenticated)
+
+
+class TestLogout(TestCase):
+    def setUp(self):
+        self.client = Client()
+        self.url = reverse('user-logout')
+        self.user = User.objects.create(
+            username='testuser',
+            email="testuser@example.com",
+            password='testpassword123'
+        )
+        self.client.login(
+            username='testuser',
+            password='testpassword123'
+        )
+
+    def test_logout_success(self):
+        self.assertTrue(self.user.is_authenticated)
+
+        response = self.client.post(self.url)
         self.assertEqual(response.status_code, 302)
