@@ -127,3 +127,29 @@ class TestBookDelivery(TestCase):
 
             response = self.client.post(self.url, post_data)
             self.assertRedirects(response, reverse('confirm-delivery'))
+
+
+class TestTrackOrder(TestCase):
+    def setUp(self):
+        self.client = Client()
+        self.url = reverse('track-order')
+
+    def test_track_order(self):
+        post_data = {
+            'order-number': '23454365456456'
+        }
+        response = self.client.post(self.url, post_data)
+        self.assertEqual(response.status_code, 302)
+        self.assertRedirects(response, reverse('order-results'))
+
+        def test_track_order_view_with_invalid_order_number(self):
+            invalid_order_number = 'INVALID123'
+
+            post_data = {
+                'order-number': invalid_order_number,
+            }
+
+            response = self.client.post(self.url, post_data)
+
+            self.assertRedirects(response, reverse('order-results'))
+            self.assertIsNone(self.client.session.get('status'))
