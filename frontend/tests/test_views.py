@@ -99,3 +99,31 @@ class TestLogout(TestCase):
 
         response = self.client.post(self.url)
         self.assertEqual(response.status_code, 302)
+
+        # self.user.refresh_from_db()
+        # self.assertTrue(self.user.is_authenticated)
+
+
+class TestBookDelivery(TestCase):
+    def setUp(self):
+        self.client = Client()
+        self.url = reverse('book_delivery')
+        self.user = User.objects.create(
+            username='testuser',
+            email='test@example.com',
+            password='testpassword'
+        )
+
+        def test_book_delivery(self):
+            # login user
+            self.client.login(username='testuser', password='testpassword')
+
+            post_data = {
+                'item': 'item',
+                'item_type': 'book',
+                'pickup_location': 'test_pickup_location',
+                'destination_location': 'test_destination'
+            }
+
+            response = self.client.post(self.url, post_data)
+            self.assertRedirects(response, reverse('confirm-delivery'))
